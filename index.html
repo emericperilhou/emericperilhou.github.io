@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emeric Perilhou | Senior Video Editor & Narrative Lead</title>
+    <title>Emeric Perilhou | Documentary Editor & Lead Archive Specialist</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --accent: #f39c12; 
-            --bg: #050505; 
-            --card-bg: #0a0a0a;
+            --bg: #080808; 
+            --card-bg: #111;
             --text: #ffffff; 
-            --text-dim: #888;
-            --border: #1a1a1a;
-            --transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-dim: #999;
+            --border: #222;
+            --transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,340 +29,293 @@
             overflow-x: hidden;
         }
 
-        /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
-
-        /* Hero Section */
+        /* Hero Section - Immersive & Bold */
         .hero { 
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 80px 20px;
+            justify-content: flex-end; 
+            padding: 40px;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(8,8,8,0) 0%, rgba(8,8,8,1) 90%);
         }
 
-        .hero-header { margin-bottom: 50px; }
+        .hero-bg-text {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            z-index: -1;
+            white-space: nowrap;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
         h1 { 
-            font-size: clamp(3rem, 12vw, 7rem); 
+            font-size: clamp(3.5rem, 10vw, 8rem); 
             font-weight: 900; 
             text-transform: uppercase; 
-            letter-spacing: -0.05em; 
-            line-height: 0.85; 
+            letter-spacing: -0.04em; 
+            line-height: 0.8; 
+            margin-bottom: 20px;
+        }
+
+        .hero-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
         }
 
         .subtitle { 
             color: var(--accent); 
             text-transform: uppercase; 
-            letter-spacing: 0.5em; 
-            font-size: clamp(0.7rem, 2vw, 0.9rem); 
-            margin-top: 20px;
-            font-weight: 400; 
+            letter-spacing: 0.3em; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
         }
 
-        /* Video Showcase Wrapper */
-        .showcase { 
-            width: 100%; 
-            max-width: 1100px; 
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .video-container {
-            position: relative;
-            background: #000;
-            border: 1px solid var(--border);
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
-            overflow: hidden;
-        }
-
-        .video-wrapper { 
-            position: relative; 
-            padding-bottom: 56.25%; /* 16:9 ratio */
-            height: 0; 
-        }
-
-        .video-wrapper iframe { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            border: 0;
-            z-index: 1;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
-            z-index: 2;
-        }
-
-        /* Fallback Link */
-        .video-fallback {
-            margin-top: 20px;
+        .location {
             font-size: 0.7rem;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 0.2em;
         }
 
-        .video-fallback a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: 0.3s;
+        /* Showcase - Full Width Impact */
+        .showcase { 
+            width: 100%; 
+            padding: 100px 0;
+            background: #000;
         }
 
-        .video-fallback a:hover {
-            border-bottom: 1px solid var(--accent);
+        .video-container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 100px 100px -50px rgba(0,0,0,1);
         }
 
-        /* Container */
-        .container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 100px 20px; 
+        .video-wrapper { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            background: #0a0a0a;
         }
 
-        /* Metrics */
-        .metrics { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px; 
-            margin-bottom: 120px; 
-            text-align: center;
+        .video-wrapper iframe { 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        .metric-card h2 { 
-            font-size: clamp(2.5rem, 5vw, 4.5rem); 
-            font-weight: 900;
-            line-height: 1;
-        }
-
-        .metric-card p { 
-            font-size: 0.75rem; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            letter-spacing: 0.25em; 
-            margin-top: 10px; 
-        }
-
-        /* Expertise Grid */
-        .expertise-grid {
+        /* Focus Section : Docu Expertise */
+        .doc-focus {
+            padding: 150px 0;
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 120px;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        .expertise-card {
+        .doc-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .doc-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
             background: var(--card-bg);
             padding: 40px;
-            border: 1px solid var(--border);
-            transition: var(--transition);
+            border-left: 4px solid var(--accent);
         }
 
-        .expertise-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .expertise-card h4 { color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem; margin-bottom: 15px; }
-
-        /* Experience Layout */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 0.8rem;
+        .highlight-box h4 {
             text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: var(--text-dim);
-            white-space: nowrap;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 15px;
         }
 
-        .section-title .line {
-            height: 1px;
-            flex-grow: 1;
-            background: var(--border);
+        /* Experience Timeline */
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -0.02em;
         }
 
         .exp-item { 
             display: grid; 
-            grid-template-columns: 200px 1fr; 
-            gap: 40px; 
-            margin-bottom: 100px;
+            grid-template-columns: 250px 1fr; 
+            gap: 50px; 
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .exp-date { 
-            font-size: 0.85rem; 
-            color: var(--text-dim); 
-            font-weight: 700; 
-        }
-
-        .exp-body h3 { 
-            font-size: 1.7rem; 
-            font-weight: 900;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
+        .exp-date { font-weight: 700; color: var(--text-dim); font-size: 0.9rem; }
+        
         .exp-body .company { 
             color: var(--accent); 
             text-transform: uppercase; 
-            font-size: 0.9rem; 
-            letter-spacing: 0.15em; 
-            margin-bottom: 25px;
+            font-size: 0.8rem; 
+            letter-spacing: 0.2em; 
+            margin-bottom: 10px;
             display: block;
         }
 
-        .exp-body ul { 
-            list-style: none; 
-            color: #aaa;
+        .exp-body h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
+
+        .exp-body ul { list-style: none; color: #bbb; }
+        .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; }
+        .exp-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+        /* Specialized Metrics */
+        .metrics { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            border: 1px solid var(--border);
+            margin: 100px 0;
         }
 
-        .exp-body li { 
-            margin-bottom: 12px; 
-            position: relative;
-            padding-left: 20px;
+        .metric-card {
+            padding: 60px 20px;
+            text-align: center;
+            border-right: 1px solid var(--border);
         }
 
-        .exp-body li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
+        .metric-card:last-child { border-right: none; }
+        .metric-card h2 { font-size: 4rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .metric-card p { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; }
 
         /* Footer */
         .footer { 
             padding: 150px 20px; 
             text-align: center; 
-            border-top: 1px solid var(--border);
-            background: linear-gradient(to bottom, #050505, #0f0f0f);
-        }
-
-        .footer h3 {
-            font-size: clamp(1.8rem, 6vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 50px;
-            text-transform: uppercase;
+            background: #000;
         }
 
         .btn { 
             display: inline-block; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px 65px; 
+            background: var(--accent); 
+            color: #000; 
+            padding: 30px 80px; 
             text-decoration: none; 
             text-transform: uppercase; 
-            font-weight: 800; 
-            font-size: 0.95rem; 
-            letter-spacing: 0.4em; 
+            font-weight: 900; 
+            font-size: 1rem; 
+            letter-spacing: 0.3em; 
             transition: var(--transition);
         }
 
         .btn:hover { 
-            background: var(--accent); 
-            color: #000; 
-            box-shadow: 0 20px 50px rgba(243, 156, 18, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(243, 156, 18, 0.4);
         }
 
-        .contact-info {
-            margin-top: 100px;
-            font-size: 0.75rem;
-            color: #444;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 850px) {
-            .exp-item { grid-template-columns: 1fr; gap: 15px; }
-            .metrics { grid-template-columns: 1fr; gap: 60px; }
-            h1 { font-size: 3.5rem; }
+        @media (max-width: 900px) {
+            .doc-focus { grid-template-columns: 1fr; padding: 50px 20px; gap: 40px; }
+            .exp-item { grid-template-columns: 1fr; gap: 20px; }
+            .metrics { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; border-bottom: 1px solid var(--border); }
+            .hero-info { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-header">
-            <p class="subtitle">Senior Narrative Editor | Archive Lead</p>
-            <h1>Emeric Perilhou</h1>
-        </div>
-        
-        <div class="showcase">
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/Sd7LssOCWSA?rel=0&modestbranding=1&controls=1&autoplay=0" 
-                            title="Emeric Perilhou Showreel"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-                <div class="video-overlay"></div>
-            </div>
-            
-            <div class="video-fallback">
-                Playback issue? 
-                <a href="https://www.youtube.com/watch?v=Sd7LssOCWSA" target="_blank">Watch directly on YouTube →</a>
-            </div>
+    <div class="hero-bg-text">EDITOR</div>
 
-            <p style="margin-top: 35px; font-size: 0.65rem; color: #555; letter-spacing: 0.5em; text-transform: uppercase;">
-                Showreel 2024 — Sound Design & Narrative Mastery
-            </p>
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle" style="margin-bottom: 10px;">Senior Narrative Editor & Archive Specialist</p>
+            <h1>Emeric<br>Perilhou</h1>
+            <div class="hero-info">
+                <p class="subtitle">Documentary Long-Format Specialist</p>
+                <p class="location">Remote Specialist | Istanbul • Paris • Worldwide</p>
+            </div>
         </div>
     </section>
 
+    <section class="showcase">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Vimeo Embed replaces YouTube -->
+                <iframe src="https://player.vimeo.com/video/1178210537?h=0&badge=0&autopause=0&player_id=0&app_id=58479" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                        title="Emeric Perilhou Showreel"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="doc-focus">
+        <div class="doc-text">
+            <h2>Sculpting<br>Reality.</h2>
+            <p>As a film editor specialized in complex documentary storytelling, I transform hundreds of hours of raw footage and disparate archives into powerful, cohesive narratives.</p>
+            <p>My strength lies in finding the perfect balance between <strong>historical rigor</strong> and <strong>modern narrative pacing</strong>.</p>
+        </div>
+        <div class="highlight-box">
+            <h4>My Speciality: The Archive</h4>
+            <p style="color: #eee; font-size: 0.95rem;">Meticulous sourcing, visual restoration, and narrative integration of historical documents. I don't just edit; I reconstruct worlds from the traces of the past.</p>
+        </div>
+    </section>
+
+    <div class="metrics">
+        <div class="metric-card">
+            <h2>100M+</h2>
+            <p>Views Generated</p>
+        </div>
+        <div class="metric-card">
+            <h2>60+</h2>
+            <p>Long-Form Documentaries</p>
+        </div>
+        <div class="metric-card">
+            <h2>17+</h2>
+            <p>Years of Experience</p>
+        </div>
+    </div>
+
     <div class="container">
-        
-        <!-- Stats -->
-        <div class="metrics">
-            <div class="metric-card">
-                <h2>100M+</h2>
-                <p>Views Generated</p>
-            </div>
-            <div class="metric-card">
-                <h2>60+</h2>
-                <p>Premium Documentaries</p>
-            </div>
-            <div class="metric-card">
-                <h2>17+</h2>
-                <p>Years of Experience</p>
-            </div>
-        </div>
-
-        <!-- Expertise Section -->
-        <div class="section-title">
-            <h2>Core Expertise</h2>
-            <div class="line"></div>
-        </div>
-        <div class="expertise-grid">
-            <div class="expertise-card">
-                <h4>Viral Narrative Design</h4>
-                <p>Surgical pacing and high-retention storytelling optimized for massive digital audiences.</p>
-            </div>
-            <div class="expertise-card">
-                <h4>Archive Curation</h4>
-                <p>Sourcing, restoration, and editorial integration of complex historical assets.</p>
-            </div>
-            <div class="expertise-card">
-                <h4>Production Directing</h4>
-                <p>Leading full-scale documentary projects from raw script to final delivery.</p>
-            </div>
-        </div>
-
-        <div class="section-title">
+        <div class="section-header">
+            <span class="section-number">01.</span>
             <h2>Experience</h2>
-            <div class="line"></div>
         </div>
 
         <!-- Experience 1 -->
@@ -372,9 +325,9 @@
                 <span class="company">DCK Studio | Collaboration with Lukas Zpira</span>
                 <h3>Lead Editor & Sound Designer</h3>
                 <ul>
-                    <li>Performance Film Editing: Lead editor for immersive cinematic projects.</li>
-                    <li>Artistic Post-Production: Developed bespoke visual aesthetics and handcrafted transitions.</li>
-                    <li>Immersive Scenography: Edited thematic film-essays for large-scale projections (Paris, Avignon, L.A.).</li>
+                    <li>Performance Film Editing: Leading high-stakes, immersive cinematic projects.</li>
+                    <li>Artistic Post-Production: Developing bespoke visual aesthetics and handcrafted textures.</li>
+                    <li>Immersive Scenography: Editing thematic film-essays for large-scale monumental projections.</li>
                 </ul>
             </div>
         </div>
@@ -384,57 +337,37 @@
             <div class="exp-date">2023 — 2025</div>
             <div class="exp-body">
                 <span class="company">DCK Production | Webedia Network</span>
-                <h3>Founder & Lead Video Editor</h3>
+                <h3>Founder & Lead Editor</h3>
                 <ul>
-                    <li>Mastery of Audience Retention: Directed narrative assembly for 60+ documentaries (100M+ views).</li>
-                    <li>World-Building: Reconstructed 90-min visual narratives via precise archive sourcing.</li>
-                    <li>Scientific Rigor: Ensured historical accuracy through academic cross-referencing.</li>
+                    <li>Audience Retention Mastery: Directed narrative assembly for 60+ documentaries (100M+ views).</li>
+                    <li>World-Building: Reconstructed complex visual narratives through precise archive sourcing.</li>
+                    <li>Scientific Rigor: Ensuring historical and academic accuracy across all editorial outputs.</li>
                 </ul>
             </div>
         </div>
 
         <!-- Experience 3 -->
         <div class="exp-item">
-            <div class="exp-date">2018 — 2023</div>
-            <div class="exp-body">
-                <span class="company">Amazon Imaging Service</span>
-                <h3>Photographer & Lighting Tech</h3>
-                <p>Optimized studio workflows for high-precision product photography and lighting control.</p>
-            </div>
-        </div>
-
-        <!-- Experience 4 -->
-        <div class="exp-item">
             <div class="exp-date">2014 — 2018</div>
             <div class="exp-body">
                 <span class="company">Saydam Tasarim Ltd.</span>
                 <h3>Lead Colorist & CGI Compositor</h3>
                 <ul>
-                    <li>ArchViz Compositing: Multi-pass rendering assembly for luxury real estate projects.</li>
-                    <li>Advanced Integration: Seamless integration of green-screen talent into CGI environments.</li>
-                    <li>Cinematic Finishing: Directed color grading and final mastering for TV commercials.</li>
+                    <li>ArchViz Compositing: Multi-pass rendering assembly for high-end luxury real estate.</li>
+                    <li>Advanced Integration: Seamlessly blending real-world elements into CGI environments.</li>
+                    <li>Cinematic Finishing: Directed color grading and final mastering for broadcast commercials.</li>
                 </ul>
             </div>
         </div>
-
-        <!-- Experience 5 -->
-        <div class="exp-item">
-            <div class="exp-date">2008 — 2013</div>
-            <div class="exp-body">
-                <span class="company">Addict TV</span>
-                <h3>Post-Production Director</h3>
-                <p>Oversaw technical department and editing teams for an independent alternative media outlet.</p>
-            </div>
-        </div>
-
     </div>
 
     <footer class="footer">
-        <h3>Ready to build your narrative?</h3>
+        <p class="subtitle" style="margin-bottom: 20px;">Available for remote projects</p>
+        <h3 style="font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; margin-bottom: 60px; text-transform: uppercase;">Ready for your next<br>Long-Format?</h3>
         <a href="mailto:e.perilhou@gmail.com" class="btn">Work With Me</a>
-        <div class="contact-info">
-            © 2026 EMERIC PERILHOU | e.perilhou@gmail.com | Istanbul • Paris • Remote
-        </div>
+        <p style="margin-top: 80px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
+            © 2026 EMERIC PERILHOU | Istanbul • Paris • Remote
+        </p>
     </footer>
 
 </body>
