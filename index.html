@@ -31,7 +31,7 @@
 
         /* Hero Section */
         .hero { 
-            min-height: 80vh; 
+            min-height: 60vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-end; 
@@ -71,16 +71,15 @@
             font-weight: 700; 
         }
 
-        /* Featured Video Section (Disney+ Style) */
+        /* Hero Player Section (Silent Immersive Loop) */
         .featured-showcase {
             position: relative;
             width: 100%;
-            height: 90vh; /* Hauteur immersive */
+            height: 90vh; 
             background: #000;
             overflow: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
         }
 
         .video-background {
@@ -94,73 +93,61 @@
 
         .video-background iframe {
             width: 100vw;
-            height: 56.25vw; /* 16:9 ratio */
+            height: 56.25vw; 
             min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 ratio */
+            min-width: 177.77vh; 
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            pointer-events: none; /* Empeche l'interaction directe pour garder le style */
+            pointer-events: none;
         }
 
-        /* Overlay pour le texte (Gradient sombre) */
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
-            background: linear-gradient(to top, #080808 0%, transparent 50%, #080808 100%);
+            background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 30%, transparent 100%);
             z-index: 2;
         }
 
         .featured-content {
             position: relative;
             z-index: 3;
-            text-align: center;
+            padding: 60px;
+            width: 100%;
             max-width: 800px;
-            padding: 20px;
         }
 
         .featured-title {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .featured-desc {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .watch-btn {
-            display: inline-block;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 5px;
-            transition: 0.3s;
-        }
-
-        .watch-btn:hover {
+            margin-bottom: 10px;
             color: var(--accent);
         }
 
-        /* Experience Section */
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        .featured-main-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
 
+        .featured-desc {
+            font-size: 1rem;
+            color: #ccc;
+            max-width: 500px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Container Sections */
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .section-header { margin-bottom: 80px; }
         .section-number { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
         .section-header h2 { font-size: 3rem; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
@@ -184,8 +171,8 @@
         .metrics { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
-            border: 1px solid var(--border);
-            margin: 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .metric-card {
@@ -208,7 +195,7 @@
         @media (max-width: 900px) {
             .exp-item { grid-template-columns: 1fr; gap: 20px; }
             .metrics { grid-template-columns: 1fr; }
-            .featured-showcase { height: 60vh; }
+            .featured-content { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -225,37 +212,37 @@
         </div>
     </section>
 
-    <!-- New Disney+ Styled Player Section -->
+    <!-- Loop Player Section -->
     <section class="featured-showcase">
         <div class="video-background">
-            <!-- Vimeo avec paramètres pour le look "Background Video" -->
-            <iframe src="https://player.vimeo.com/video/1178210537?background=1&autoplay=1&loop=1&byline=0&title=0" 
+            <iframe src="https://player.vimeo.com/video/1178274878?background=1&autoplay=1&loop=1&autopause=0&muted=1" 
                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
+        
         <div class="video-overlay"></div>
         
         <div class="featured-content">
-            <h2 class="featured-title">Narrative Showreel 2026</h2>
+            <h2 class="featured-title">Editorial Vision</h2>
+            <h3 class="featured-main-title">Narrative<br>Showcase</h3>
             <p class="featured-desc">
                 A selection of cinematic works focusing on long-format documentary storytelling, 
                 reconstructing history through archive restoration and precise editorial pacing.
             </p>
-            <a href="https://vimeo.com/1178210537" target="_blank" class="watch-btn">Watch Now</a>
         </div>
     </section>
 
     <div class="metrics">
         <div class="metric-card">
             <h2>100M+</h2>
-            <p>Views Generated</p>
+            <p>Total Views</p>
         </div>
         <div class="metric-card">
             <h2>60+</h2>
-            <p>Long-Form Documentaries</p>
+            <p>Long-Form Films</p>
         </div>
-        <div class="metric-card) ">
+        <div class="metric-card">
             <h2>17+</h2>
-            <p>Years of Experience</p>
+            <p>Years in Industry</p>
         </div>
     </div>
 
@@ -266,35 +253,35 @@
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">2025 — PRESENT</div>
+            <div class="exp-date">PRESENT</div>
             <div class="exp-body">
                 <h3>Lead Editor & Sound Designer</h3>
                 <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Studio | Collaboration with Lukas Zpira</p>
                 <ul>
-                    <li>Performance Film Editing: Leading high-stakes, immersive cinematic projects.</li>
-                    <li>Artistic Post-Production: Developing bespoke visual aesthetics.</li>
+                    <li>High-end cinematic storytelling for international productions.</li>
+                    <li>Soundscapes and immersive audio design for narrative works.</li>
                 </ul>
             </div>
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">2023 — 2025</div>
+            <div class="exp-date">PAST PROJECTS</div>
             <div class="exp-body">
                 <h3>Founder & Lead Editor</h3>
                 <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Production | Webedia Network</p>
                 <ul>
-                    <li>Audience Retention Mastery: Directed assembly for 60+ documentaries.</li>
-                    <li>Scientific Rigor: Ensuring historical and academic accuracy.</li>
+                    <li>Supervised the editing of 60+ documentary films.</li>
+                    <li>Integrated 3D reconstruction for historical and scientific clarity.</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase;">Ready for your next<br>Long-Format?</h3>
-        <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">Download Full CV</a>
+        <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase;">Building stories<br>that matter</h3>
+        <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View Resume</a>
         <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
-            © 2026 EMERIC PERILHOU | Istanbul • Paris • Remote
+            © EMERIC PERILHOU | Istanbul • Paris • Remote
         </p>
     </footer>
 
