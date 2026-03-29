@@ -215,7 +215,8 @@
     <!-- Loop Player Section -->
     <section class="featured-showcase">
         <div class="video-background">
-            <iframe src="https://player.vimeo.com/video/1178274878?background=1&autoplay=1&loop=1&autopause=0&muted=1" 
+            <!-- Ajout de playsinline=1 et vérification des paramètres de background vimeo -->
+            <iframe id="vimeo-player" src="https://player.vimeo.com/video/1178274878?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&playsinline=1" 
                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
         
@@ -284,6 +285,15 @@
             © EMERIC PERILHOU | Istanbul • Paris • Remote
         </p>
     </footer>
+
+    <script>
+        // Script pour s'assurer que l'iframe Vimeo démarre bien
+        window.onload = function() {
+            const iframe = document.getElementById('vimeo-player');
+            // On renvoie un message de play au cas où le navigateur bloque l'autoplay initial
+            iframe.contentWindow.postMessage('{"method":"play"}', '*');
+        };
+    </script>
 
 </body>
 </html>
