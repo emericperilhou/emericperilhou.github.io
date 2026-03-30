@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            /* COULEUR FINALE : GOLD #d4af37 */
             --accent: #d4af37; 
-            
             --bg: #080808; 
             --card-bg: #111;
             --text: #ffffff; 
@@ -218,11 +216,27 @@
 
         /* Footer */
         .footer { padding: 150px 20px; text-align: center; background: #000; }
+        
+        .footer-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
         .btn { 
             display: inline-block; background: var(--accent); color: #000; padding: 25px 50px; 
             text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; 
             transition: transform 0.3s ease;
         }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
         .btn:hover { transform: scale(1.05); }
 
         @media (max-width: 900px) {
@@ -231,6 +245,7 @@
             .metric-card { border-right: none; border-bottom: 1px solid var(--border); }
             .featured-content { padding: 40px 20px; }
             h1 { font-size: 4rem; }
+            .footer-cta { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -260,7 +275,7 @@
             <h2 class="featured-title">Editorial Vision</h2>
             <h3 class="featured-main-title">Narrative<br>Showcase</h3>
             <p class="featured-desc">
-                Spécialisé dans les récits documentaires "human-free". Reconstruction de thématiques Sciences & Nature à travers des rythmes éditoriaux intenses et un sound design immersif.
+                Specialized in "human-free" documentary storytelling. Reconstructing complex Science & Nature themes through high-intensity editing rhythms and immersive sound design.
             </p>
         </div>
     </section>
@@ -271,51 +286,51 @@
             <div class="number-container">
                 <span class="count" data-target="100">0</span><span>M+</span>
             </div>
-            <p>Vues Totales</p>
+            <p>Total Views</p>
         </div>
         <div class="metric-card">
             <div class="number-container">
                 <span class="count" data-target="60">0</span><span>+</span>
             </div>
-            <p>Films Long-Format</p>
+            <p>Long-Format Films</p>
         </div>
         <div class="metric-card">
             <div class="number-container">
                 <span class="count" data-target="7">0</span><span>x</span><span class="count" data-target="7">0</span>
             </div>
-            <p>Pays / Langues</p>
+            <p>Countries / Languages</p>
         </div>
     </div>
 
     <div class="container">
         <div class="section-header">
             <span class="section-number">01.</span>
-            <h2>Expériences Choisies</h2>
+            <h2>Selected Experience</h2>
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">PRÉSENT</div>
+            <div class="exp-date">PRESENT</div>
             <div class="exp-body">
                 <h3>Lead Editor & Sound Designer</h3>
                 <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
-                    <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | Collaboration avec Lukas Zpira
+                    <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | Collaboration with Lukas Zpira
                 </p>
                 <ul>
-                    <li>Storytelling cinématographique de haut niveau pour des productions internationales.</li>
-                    <li>Soundscapes et création audio immersive pour des œuvres narratives.</li>
+                    <li>High-end cinematic storytelling for international productions.</li>
+                    <li>Crafting immersive soundscapes and audio design for narrative works.</li>
                 </ul>
             </div>
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">PROJETS PASSÉS</div>
+            <div class="exp-date">PREVIOUS</div>
             <div class="exp-body">
-                <h3>Fondateur & Lead Editor</h3>
+                <h3>Founder & Lead Editor</h3>
                 <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Production | Webedia Network</p>
                 <ul>
-                    <li>Supervision de plus de 60 documentaires avec contraintes éditoriales sans présence humaine.</li>
-                    <li>Distribution mondiale : Adaptation des rythmes de montage pour 7 doublages linguistiques.</li>
-                    <li>Reconstruction de concepts complexes pour des documentaires Science & Nature.</li>
+                    <li>Supervised over 60 documentaries with strict narrative constraints (archive-only).</li>
+                    <li>Global distribution: Adapted editing pacing for 7 different language dubs.</li>
+                    <li>Concept reconstruction for complex Science & Nature documentary features.</li>
                 </ul>
             </div>
         </div>
@@ -323,7 +338,12 @@
 
     <footer class="footer">
         <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase;">Building stories<br>that matter</h3>
-        <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">Voir le CV</a>
+        
+        <div class="footer-cta">
+            <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View Resume</a>
+            <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">Contact on WhatsApp</a>
+        </div>
+
         <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
             © EMERIC PERILHOU | Istanbul • Paris • Remote
         </p>
