@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --accent: #f39c12; 
+            /* COULEUR FINALE : GOLD #d4af37 */
+            --accent: #d4af37; 
+            
             --bg: #080808; 
             --card-bg: #111;
             --text: #ffffff; 
@@ -71,7 +73,9 @@
             font-weight: 700; 
         }
 
-        /* Hero Player Section */
+        .location { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* Showcase Player */
         .featured-showcase {
             position: relative;
             width: 100%;
@@ -146,7 +150,40 @@
             line-height: 1.6;
         }
 
-        /* Container Sections */
+        /* Stats */
+        .metrics { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: #000;
+        }
+
+        .metric-card {
+            padding: 80px 20px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .metric-card.visible { opacity: 1; transform: translateY(0); }
+        .metric-card:last-child { border-right: none; }
+        
+        .metric-card .number-container { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            margin-bottom: 10px; 
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+        
+        .metric-card p { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; }
+
+        /* Exp */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .section-header { margin-bottom: 80px; }
         .section-number { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
@@ -167,53 +204,33 @@
         .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; }
         .exp-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
-        /* Metrics */
-        .metrics { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: #000;
+        .studio-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .metric-card {
-            padding: 80px 20px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
+        .studio-link:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
         }
-
-        .metric-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .metric-card:last-child { border-right: none; }
-        .metric-card .number-container { 
-            font-size: 4.5rem; 
-            font-weight: 900; 
-            line-height: 1; 
-            margin-bottom: 10px; 
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-        }
-        .metric-card p { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; }
 
         /* Footer */
         .footer { padding: 150px 20px; text-align: center; background: #000; }
         .btn { 
             display: inline-block; background: var(--accent); color: #000; padding: 25px 50px; 
             text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; 
+            transition: transform 0.3s ease;
         }
+        .btn:hover { transform: scale(1.05); }
 
         @media (max-width: 900px) {
             .exp-item { grid-template-columns: 1fr; gap: 20px; }
             .metrics { grid-template-columns: 1fr; }
             .metric-card { border-right: none; border-bottom: 1px solid var(--border); }
             .featured-content { padding: 40px 20px; }
+            h1 { font-size: 4rem; }
         }
     </style>
 </head>
@@ -225,12 +242,12 @@
             <h1>Emeric<br>Perilhou</h1>
             <div class="hero-info">
                 <p class="subtitle">Documentary Long-Format Specialist</p>
-                <p class="location">Istanbul • Paris • Remote • Worldwide</p>
+                <p class="location">Istanbul • Paris • Worldwide</p>
             </div>
         </div>
     </section>
 
-    <!-- Loop Player Section -->
+    <!-- Player Showcase -->
     <section class="featured-showcase">
         <div class="video-background">
             <iframe id="vimeo-player" src="https://player.vimeo.com/video/1178274878?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&playsinline=1" 
@@ -243,60 +260,62 @@
             <h2 class="featured-title">Editorial Vision</h2>
             <h3 class="featured-main-title">Narrative<br>Showcase</h3>
             <p class="featured-desc">
-                Specialized in human-free documentary narratives. Reconstructing Science & Nature through high-pacing editorial rhythms and immersive sound design.
+                Spécialisé dans les récits documentaires "human-free". Reconstruction de thématiques Sciences & Nature à travers des rythmes éditoriaux intenses et un sound design immersif.
             </p>
         </div>
     </section>
 
-    <!-- Animated Metrics Section -->
+    <!-- Stats Section -->
     <div class="metrics" id="metrics-section">
         <div class="metric-card">
             <div class="number-container">
                 <span class="count" data-target="100">0</span><span>M+</span>
             </div>
-            <p>Total Views</p>
+            <p>Vues Totales</p>
         </div>
         <div class="metric-card">
             <div class="number-container">
                 <span class="count" data-target="60">0</span><span>+</span>
             </div>
-            <p>Long-Form Films</p>
+            <p>Films Long-Format</p>
         </div>
         <div class="metric-card">
             <div class="number-container">
                 <span class="count" data-target="7">0</span><span>x</span><span class="count" data-target="7">0</span>
             </div>
-            <p>Countries / Languages</p>
+            <p>Pays / Langues</p>
         </div>
     </div>
 
     <div class="container">
         <div class="section-header">
             <span class="section-number">01.</span>
-            <h2>Selected Experience</h2>
+            <h2>Expériences Choisies</h2>
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">PRESENT</div>
+            <div class="exp-date">PRÉSENT</div>
             <div class="exp-body">
                 <h3>Lead Editor & Sound Designer</h3>
-                <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Studio | Collaboration with Lukas Zpira</p>
+                <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
+                    <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | Collaboration avec Lukas Zpira
+                </p>
                 <ul>
-                    <li>High-end cinematic storytelling for international productions.</li>
-                    <li>Soundscapes and immersive audio design for narrative-driven works.</li>
+                    <li>Storytelling cinématographique de haut niveau pour des productions internationales.</li>
+                    <li>Soundscapes et création audio immersive pour des œuvres narratives.</li>
                 </ul>
             </div>
         </div>
 
         <div class="exp-item">
-            <div class="exp-date">PAST PROJECTS</div>
+            <div class="exp-date">PROJETS PASSÉS</div>
             <div class="exp-body">
-                <h3>Founder & Lead Editor</h3>
+                <h3>Fondateur & Lead Editor</h3>
                 <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Production | Webedia Network</p>
                 <ul>
-                    <li>Supervised 60+ documentary films with "no-human" editorial constraints.</li>
-                    <li>Global distribution: Adapted montage rhythms for 7 different language voice-overs.</li>
-                    <li>Reconstructed complex concepts for Science & Nature documentaries.</li>
+                    <li>Supervision de plus de 60 documentaires avec contraintes éditoriales sans présence humaine.</li>
+                    <li>Distribution mondiale : Adaptation des rythmes de montage pour 7 doublages linguistiques.</li>
+                    <li>Reconstruction de concepts complexes pour des documentaires Science & Nature.</li>
                 </ul>
             </div>
         </div>
@@ -304,7 +323,7 @@
 
     <footer class="footer">
         <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase;">Building stories<br>that matter</h3>
-        <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View Resume</a>
+        <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">Voir le CV</a>
         <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
             © EMERIC PERILHOU | Istanbul • Paris • Remote
         </p>
@@ -312,13 +331,11 @@
 
     <script>
         window.onload = function() {
-            // Vimeo Autoplay fix
             const iframe = document.getElementById('vimeo-player');
             if(iframe) {
                 iframe.contentWindow.postMessage('{"method":"play"}', '*');
             }
 
-            // Animation des compteurs
             const metricsSection = document.getElementById('metrics-section');
             const counters = document.querySelectorAll('.count');
             const cards = document.querySelectorAll('.metric-card');
@@ -333,8 +350,8 @@
 
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
-                    const duration = 2000; // 2 secondes
-                    const increment = target / (duration / 16); // 60 fps approx
+                    const duration = 2000; 
+                    const increment = target / (duration / 16); 
 
                     const updateCount = () => {
                         const current = +counter.innerText;
@@ -349,7 +366,6 @@
                 });
             };
 
-            // Intersection Observer pour déclencher au scroll
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !started) {
@@ -359,7 +375,7 @@
                 });
             }, { threshold: 0.3 });
 
-            observer.observe(metricsSection);
+            if(metricsSection) observer.observe(metricsSection);
         };
     </script>
 
