@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Splash Screen Overlay */
+        /* Splash Screen */
         #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -82,22 +82,21 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
 
-        /* Main Content Fade In */
+        /* Wrapper */
         #main-wrapper { opacity: 0; transition: opacity 1.5s ease; }
         body.active #main-wrapper { opacity: 1; }
         body.active { overflow-y: auto; }
 
-        /* Hero Section */
+        /* Hero */
         .hero { 
             min-height: 70vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-end; 
             padding: 40px;
-            position: relative;
         }
 
-        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; z-index: 2; }
+        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; }
 
         h1.main-title { 
             font-size: clamp(3.5rem, 10vw, 8rem); 
@@ -119,7 +118,7 @@
         .subtitle { color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; font-weight: 700; }
         .location { font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
 
-        /* Showcase Player */
+        /* Showcase & Video Section */
         .featured-showcase {
             position: relative;
             width: 100%;
@@ -134,7 +133,6 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            background: #000;
         }
 
         .video-background iframe {
@@ -148,29 +146,51 @@
             pointer-events: none;
         }
 
-        /* Mobile specific video framing */
-        @media (max-aspect-ratio: 1/1) {
-            .video-background iframe {
-                width: 300vw; /* Increase width to allow centering crop on vertical screens */
-                height: 100vh;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        /* CAPTEUR DE SOURIS POUR LE HOVER */
+        .mouse-capture-layer {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 50; 
+            cursor: default;
         }
 
         .video-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.2) 30%, transparent 100%);
+            background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 40%, transparent 100%);
             z-index: 2;
+            pointer-events: none;
         }
 
-        /* Video Controls */
+        /* Texte qui s'estompe */
+        .featured-content {
+            position: relative;
+            z-index: 60; 
+            padding: 60px;
+            width: 100%;
+            max-width: 800px;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none; 
+        }
+
+        .featured-content.is-hidden {
+            opacity: 0;
+        }
+
+        /* Réapparition au hover du capteur */
+        .mouse-capture-layer:hover ~ .featured-content {
+            opacity: 1 !important;
+        }
+
+        .featured-title { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+        .featured-main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+
+        /* Contrôles de la vidéo */
         .video-controls {
             position: absolute;
             bottom: 40px;
             right: 40px;
-            z-index: 10;
+            z-index: 100;
             display: flex;
             gap: 15px;
         }
@@ -190,24 +210,9 @@
             backdrop-filter: blur(10px);
         }
 
-        .control-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: scale(1.1);
-        }
+        .control-btn:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); }
 
-        .featured-content {
-            position: relative;
-            z-index: 3;
-            padding: 60px;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .featured-title { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
-        .featured-main-title { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
-
-        /* Metrics & Exp */
+        /* Metrics */
         .metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: #000; }
         .metric-card { padding: 80px 20px; text-align: center; border-right: 1px solid var(--border); opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .metric-card.visible { opacity: 1; transform: translateY(0); }
@@ -215,6 +220,7 @@
         .metric-card .number-container { font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; display: flex; justify-content: center; align-items: baseline; }
         .metric-card p { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; }
 
+        /* Experience Section */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .section-header { margin-bottom: 80px; }
         .section-number { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
@@ -223,39 +229,24 @@
         .exp-item { display: grid; grid-template-columns: 250px 1fr; gap: 50px; margin-bottom: 80px; padding-bottom: 80px; border-bottom: 1px solid var(--border); }
         .exp-date { font-weight: 700; color: var(--text-dim); font-size: 0.9rem; }
         .exp-body h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
-        .exp-body ul { list-style: none; color: #bbb; }
-        .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; }
+        .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; list-style: none; color: #bbb; }
         .exp-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
-        .studio-link { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212, 175, 55, 0.3); transition: all 0.3s ease; }
-        .studio-link:hover { border-bottom-color: var(--accent); }
-
-        /* Doc Grid */
-        .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .doc-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border); transition: all 0.4s ease; position: relative; }
-        .doc-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); }
-        .lang-badge { color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; }
-        .doc-card h4 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; }
-        .tech-spec { display: block; margin-top: 20px; font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-
+        /* Footer */
         .footer { padding: 150px 20px; text-align: center; background: #000; }
         .btn { display: inline-block; background: var(--accent); color: #000; padding: 25px 50px; text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; transition: transform 0.3s ease; }
-        .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-        .btn:hover { transform: scale(1.05); }
+        .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-left: 10px; }
 
         @media (max-width: 900px) {
             .exp-item { grid-template-columns: 1fr; gap: 20px; }
             .metrics { grid-template-columns: 1fr; }
             h1.main-title { font-size: 4rem; }
-            .video-controls { bottom: 20px; right: 20px; }
-            .featured-content { padding: 30px; bottom: 80px; }
+            .btn { width: 100%; margin-bottom: 10px; margin-left: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Professional Intro Overlay -->
     <div id="splash-screen">
         <h1>Emeric Perilhou</h1>
         <p>Senior Narrative Editor | Long-Format Specialist</p>
@@ -274,110 +265,78 @@
             </div>
         </section>
 
-        <!-- Showcase Player Section -->
-        <section class="featured-showcase" id="showcase-section">
-            <div class="video-background">
-                <!-- Added background=1 and color=080808 for smoother mobile loading -->
-                <iframe id="vimeo-player" 
-                        src="https://player.vimeo.com/video/1178210537?api=1&autoplay=0&loop=1&byline=0&title=0&muted=0&background=0&color=d4af37" 
-                        frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
+        <section class="featured-showcase" id="video-section">
+            <!-- Couche invisible pour intercepter la souris au-dessus de la vidéo -->
+            <div class="mouse-capture-layer"></div>
             
-            <!-- Video Controls Overlay -->
-            <div class="video-controls">
-                <button class="control-btn" id="toggle-video" onclick="togglePlay()" title="Play/Pause">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </button>
-                <button class="control-btn" id="toggle-audio" onclick="toggleMute()" title="Mute/Unmute">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                </button>
+            <div class="video-background">
+                <iframe id="vimeo-player" 
+                        src="https://player.vimeo.com/video/1178210537?api=1&player_id=vimeo-player&autoplay=0&loop=1&byline=0&title=0&muted=0" 
+                        frameborder="0" allow="autoplay; fullscreen"></iframe>
             </div>
 
             <div class="video-overlay"></div>
-            <div class="featured-content">
+            
+            <div class="featured-content" id="video-text-overlay">
                 <h2 class="featured-title">Editorial Power</h2>
-                <h3 class="featured-main-title">Narrative<br>Showcase</h3>
-                <p style="color: #ccc; max-width: 600px; font-weight: 300;">95-minute narrative architecture. Expert management of high-density archives and academic scripts.</p>
+                <h3 class="featured-main-title">Narrative Showcase</h3>
+                <p style="color: #ccc; max-width: 600px; font-weight: 300;">Architecture narrative de 95 minutes. Gestion experte d'archives haute densité et de scripts académiques.</p>
+            </div>
+
+            <div class="video-controls">
+                <button class="control-btn" onclick="togglePlay()" id="play-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <button class="control-btn" onclick="toggleMute()" id="mute-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
             </div>
         </section>
 
         <div class="metrics" id="metrics-section">
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="100">0</span><span>M+</span></div>
-                <p>Total Views</p>
+                <p>Vues Totales</p>
             </div>
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="60">0</span><span>+</span></div>
-                <p>90-min Documentaries</p>
+                <p>Documentaires 90-min</p>
             </div>
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="7">0</span><span>x7</span></div>
-                <p>Countries / Languages</p>
+                <p>Pays / Langues</p>
             </div>
         </div>
 
         <div class="container">
             <div class="section-header">
                 <span class="section-number">01.</span>
-                <h2>Path & Expertise</h2>
+                <h2>Expérience & Expertise</h2>
             </div>
             <div class="exp-item">
-                <div class="exp-date">PRESENT</div>
+                <div class="exp-date">ACTUEL</div>
                 <div class="exp-body">
                     <h3>Senior Film Editor</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
-                        <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | In collaboration with Lukas Zpira
-                    </p>
-                    <ul><li>Editing symbolic narratives and cinematographic film essays.</li></ul>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">DCK Studio | En collaboration avec Lukas Zpira</p>
+                    <ul><li>Montage de récits symboliques et d'essais cinématographiques.</li></ul>
                 </div>
             </div>
             <div class="exp-item">
                 <div class="exp-date">2023 - 2025</div>
                 <div class="exp-body">
-                    <h3>Founder & Lead Documentarian</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
-                        <span class="studio-link" style="cursor: default;">ORBINEA STUDIO network</span> | Webedia Network
-                    </p>
+                    <h3>Fondateur & Lead Documentariste</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">ORBINEA STUDIO | Réseau Webedia</p>
                     <ul>
-                        <li><strong>Editing Direction:</strong> Delivered 60+ 90-minute documentary features.</li>
-                        <li><strong>Archive Journalism:</strong> Global sourcing and fact-checking (NASA, National Archives).</li>
+                        <li><strong>Direction Éditoriale :</strong> Réalisation de plus de 60 longs-métrages documentaires.</li>
+                        <li><strong>Journalisme d'Archive :</strong> Sourcing mondial et fact-checking (NASA, National Archives).</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02.</span>
-                <h2>Documentary Portfolio</h2>
-            </div>
-            <div class="doc-grid">
-                <div class="doc-card">
-                    <div class="doc-meta"><span>95 MIN</span><span class="lang-badge">Earth & Life</span></div>
-                    <h4>Earth & Life Sciences</h4>
-                    <p style="font-size: 0.9rem; color: #888;">Narratives on Earth's birth, origins of life, climate cycles, and paleontology.</p>
-                    <span class="tech-spec">Long Institutional Format</span>
-                </div>
-                <div class="doc-card">
-                    <div class="doc-meta"><span>85 - 90 MIN</span><span class="lang-badge">Archives</span></div>
-                    <h4>History & Civilizations</h4>
-                    <p style="font-size: 0.9rem; color: #888;">Restoration and enhancement of period documents for long-format broadcast.</p>
-                    <span class="tech-spec">Historical Rigor</span>
-                </div>
-                <div class="doc-card">
-                    <div class="doc-meta"><span>PIPELINE</span><span class="lang-badge">Ops</span></div>
-                    <h4>Industrial Post-Prod</h4>
-                    <p style="font-size: 0.9rem; color: #888;">High-volume delivery for VOD distribution without editorial compromise.</p>
-                    <span class="tech-spec">HD / 4K Scaling</span>
-                </div>
-            </div>
-        </div>
-
         <footer class="footer">
-            <div class="footer-cta">
-                <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View CV (PDF)</a>
-                <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">WhatsApp</a>
-            </div>
+            <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">Voir CV (PDF)</a>
+            <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">WhatsApp</a>
             <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
                 © EMERIC PERILHOU | <span style="color: var(--accent); font-weight: 900;">REMOTE</span> / Istanbul / Paris
             </p>
@@ -386,86 +345,90 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        let player;
-        let isMuted = false;
-        let isPlaying = true;
+        let vPlayer;
+        let playing = true;
+        let muted = false;
 
         function startExperience() {
             const splash = document.getElementById('splash-screen');
-            const showcase = document.getElementById('showcase-section');
             const iframe = document.querySelector('#vimeo-player');
+            const overlay = document.getElementById('video-text-overlay');
+            const videoSec = document.getElementById('video-section');
             
-            // Initialise Player before hiding splash to start buffering
-            player = new Vimeo.Player(iframe);
-            
+            vPlayer = new Vimeo.Player(iframe);
             splash.style.opacity = '0';
             
             setTimeout(() => {
                 splash.style.display = 'none';
                 document.body.classList.add('active');
                 
-                // Audio and Playback
-                player.setVolume(1);
-                player.play().catch(error => {
-                    console.log("Autoplay blocked, user interaction needed");
+                vPlayer.play();
+                vPlayer.setVolume(1);
+                
+                // Centrage automatique forcé vers la vidéo dès le chargement
+                window.scrollTo({
+                    top: videoSec.offsetTop,
+                    behavior: 'smooth'
                 });
 
-                // Smooth Scroll to Showcase
-                showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Masquage automatique du texte après un court délai
+                setTimeout(() => {
+                    overlay.classList.add('is-hidden');
+                }, 3500);
 
-                startStats();
-            }, 1000);
+                startCounters();
+            }, 800);
         }
 
         function togglePlay() {
-            const btn = document.getElementById('toggle-video');
-            if (isPlaying) {
-                player.pause();
+            const btn = document.getElementById('play-btn');
+            if (playing) {
+                vPlayer.pause();
                 btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
             } else {
-                player.play();
+                vPlayer.play();
                 btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
             }
-            isPlaying = !isPlaying;
+            playing = !playing;
         }
 
         function toggleMute() {
-            const btn = document.getElementById('toggle-audio');
-            if (isMuted) {
-                player.setVolume(1);
-                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+            const btn = document.getElementById('mute-btn');
+            if (muted) {
+                vPlayer.setVolume(1);
+                btn.style.color = '#fff';
             } else {
-                player.setVolume(0);
-                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+                vPlayer.setVolume(0);
+                btn.style.color = 'var(--accent)';
             }
-            isMuted = !isMuted;
+            muted = !muted;
         }
 
-        function startStats() {
-            const metricsSection = document.getElementById('metrics-section');
+        function startCounters() {
+            const section = document.getElementById('metrics-section');
             const counters = document.querySelectorAll('.count');
             const cards = document.querySelectorAll('.metric-card');
             
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        cards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), i * 200));
-                        counters.forEach(counter => {
-                            const target = +counter.getAttribute('data-target');
-                            const updateCount = () => {
-                                const current = +counter.innerText;
-                                const inc = target / 120;
-                                if (current < target) {
-                                    counter.innerText = Math.ceil(current + inc);
-                                    setTimeout(updateCount, 16);
-                                } else counter.innerText = target;
-                            };
-                            updateCount();
-                        });
-                    }
-                });
-            }, { threshold: 0.3 });
-            observer.observe(metricsSection);
+                if (entries[0].isIntersecting) {
+                    cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 150));
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let current = 0;
+                        const update = () => {
+                            const step = target / 60;
+                            if (current < target) {
+                                current += step;
+                                counter.innerText = Math.ceil(current);
+                                setTimeout(update, 20);
+                            } else counter.innerText = target;
+                        };
+                        update();
+                    });
+                    observer.unobserve(section);
+                }
+            }, { threshold: 0.5 });
+            observer.observe(section);
         }
     </script>
 </body>
