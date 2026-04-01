@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emeric Perilhou | Documentary Editor & Lead Archive Specialist</title>
-    <!-- Fonts -->
+    <title>Emeric Perilhou | Senior Narrative Editor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
@@ -26,12 +25,71 @@
             color: var(--text); 
             font-family: 'Inter', sans-serif; 
             line-height: 1.6; 
-            overflow-x: hidden;
+            overflow: hidden; 
+            scroll-behavior: smooth;
         }
+
+        /* Splash Screen Overlay */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #splash-screen h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        #splash-screen p {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .enter-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            padding: 18px 45px;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 900;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .enter-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Main Content Fade In */
+        #main-wrapper { opacity: 0; transition: opacity 1.5s ease; }
+        body.active #main-wrapper { opacity: 1; }
+        body.active { overflow-y: auto; }
 
         /* Hero Section */
         .hero { 
-            min-height: 60vh; 
+            min-height: 70vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-end; 
@@ -39,14 +97,9 @@
             position: relative;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            z-index: 2;
-        }
+        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; z-index: 2; }
 
-        h1 { 
+        h1.main-title { 
             font-size: clamp(3.5rem, 10vw, 8rem); 
             font-weight: 900; 
             text-transform: uppercase; 
@@ -63,21 +116,14 @@
             padding-top: 20px;
         }
 
-        .subtitle { 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            letter-spacing: 0.3em; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-        }
-
-        .location { font-size: 0.9rem; color: var(--text-dim); }
+        .subtitle { color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; font-weight: 700; }
+        .location { font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
 
         /* Showcase Player */
         .featured-showcase {
             position: relative;
             width: 100%;
-            height: 90vh; 
+            height: 100vh; 
             background: #000;
             overflow: hidden;
             display: flex;
@@ -86,10 +132,7 @@
 
         .video-background {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
         }
 
@@ -99,20 +142,47 @@
             min-height: 100vh;
             min-width: 177.77vh; 
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
         .video-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 30%, transparent 100%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.2) 30%, transparent 100%);
             z-index: 2;
+        }
+
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 10;
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: scale(1.1);
         }
 
         .featured-content {
@@ -123,281 +193,264 @@
             max-width: 800px;
         }
 
-        .featured-title {
-            font-size: 0.7rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
+        .featured-title { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+        .featured-main-title { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
 
-        .featured-main-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .featured-desc {
-            font-size: 1rem;
-            color: #ccc;
-            max-width: 500px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        /* Stats */
-        .metrics { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: #000;
-        }
-
-        .metric-card {
-            padding: 80px 20px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-
+        /* Metrics & Exp */
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: #000; }
+        .metric-card { padding: 80px 20px; text-align: center; border-right: 1px solid var(--border); opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .metric-card.visible { opacity: 1; transform: translateY(0); }
         .metric-card:last-child { border-right: none; }
-        
-        .metric-card .number-container { 
-            font-size: 4.5rem; 
-            font-weight: 900; 
-            line-height: 1; 
-            margin-bottom: 10px; 
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-        }
-        
+        .metric-card .number-container { font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; display: flex; justify-content: center; align-items: baseline; }
         .metric-card p { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; }
 
-        /* Exp */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .section-header { margin-bottom: 80px; }
         .section-number { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; display: block; }
         .section-header h2 { font-size: 3rem; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
 
-        .exp-item { 
-            display: grid; 
-            grid-template-columns: 250px 1fr; 
-            gap: 50px; 
-            margin-bottom: 80px;
-            padding-bottom: 80px;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .exp-item { display: grid; grid-template-columns: 250px 1fr; gap: 50px; margin-bottom: 80px; padding-bottom: 80px; border-bottom: 1px solid var(--border); }
         .exp-date { font-weight: 700; color: var(--text-dim); font-size: 0.9rem; }
         .exp-body h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
         .exp-body ul { list-style: none; color: #bbb; }
         .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; }
         .exp-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
-        .studio-link {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
+        .studio-link { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212, 175, 55, 0.3); transition: all 0.3s ease; }
+        .studio-link:hover { border-bottom-color: var(--accent); }
 
-        .studio-link:hover {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
+        /* Doc Grid */
+        .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .doc-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--border); transition: all 0.4s ease; position: relative; }
+        .doc-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); }
+        .lang-badge { color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; }
+        .doc-card h4 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; }
+        .tech-spec { display: block; margin-top: 20px; font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
 
-        /* Footer */
         .footer { padding: 150px 20px; text-align: center; background: #000; }
-        
-        .footer-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .btn { 
-            display: inline-block; background: var(--accent); color: #000; padding: 25px 50px; 
-            text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; 
-            transition: transform 0.3s ease;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-        }
-
+        .btn { display: inline-block; background: var(--accent); color: #000; padding: 25px 50px; text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; transition: transform 0.3s ease; }
+        .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
         .btn:hover { transform: scale(1.05); }
 
         @media (max-width: 900px) {
             .exp-item { grid-template-columns: 1fr; gap: 20px; }
             .metrics { grid-template-columns: 1fr; }
-            .metric-card { border-right: none; border-bottom: 1px solid var(--border); }
-            .featured-content { padding: 40px 20px; }
-            h1 { font-size: 4rem; }
-            .footer-cta { flex-direction: column; align-items: center; }
+            h1.main-title { font-size: 4rem; }
+            .video-controls { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="subtitle" style="margin-bottom: 10px;">Senior Narrative Editor & Archive Specialist</p>
-            <h1>Emeric<br>Perilhou</h1>
-            <div class="hero-info">
-                <p class="subtitle">Documentary Long-Format Specialist</p>
-                <p class="location">Istanbul • Paris • Worldwide</p>
+    <!-- Professional Intro Overlay -->
+    <div id="splash-screen">
+        <h1>Emeric Perilhou</h1>
+        <p>Senior Narrative Editor | Long-Format Specialist</p>
+        <button class="enter-btn" onclick="startExperience()">Play Showreel</button>
+    </div>
+
+    <div id="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <p class="subtitle" style="margin-bottom: 10px;">Senior Narrative Editor | Archive Specialist</p>
+                <h1 class="main-title">Emeric<br>Perilhou</h1>
+                <div class="hero-info">
+                    <p class="subtitle">Documentary Long-Format Specialist</p>
+                    <p class="location"><span style="color: var(--accent); font-weight: 900;">REMOTE</span> / Istanbul / Paris</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- L'ID id="showcase-section" a été ajouté pour le scroll automatique -->
+        <section class="featured-showcase" id="showcase-section">
+            <div class="video-background">
+                <iframe id="vimeo-player" 
+                        src="https://player.vimeo.com/video/1178210537?api=1&autoplay=0&loop=1&byline=0&title=0&muted=0" 
+                        frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Video Controls Overlay -->
+            <div class="video-controls">
+                <button class="control-btn" id="toggle-video" onclick="togglePlay()" title="Play/Pause">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <button class="control-btn" id="toggle-audio" onclick="toggleMute()" title="Mute/Unmute">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
+            </div>
+
+            <div class="video-overlay"></div>
+            <div class="featured-content">
+                <h2 class="featured-title">Editorial Power</h2>
+                <h3 class="featured-main-title">Narrative<br>Showcase</h3>
+                <p style="color: #ccc; max-width: 600px; font-weight: 300;">95-minute narrative architecture. Expert management of high-density archives and academic scripts.</p>
+            </div>
+        </section>
+
+        <div class="metrics" id="metrics-section">
+            <div class="metric-card">
+                <div class="number-container"><span class="count" data-target="100">0</span><span>M+</span></div>
+                <p>Total Views</p>
+            </div>
+            <div class="metric-card">
+                <div class="number-container"><span class="count" data-target="60">0</span><span>+</span></div>
+                <p>90-min Documentaries</p>
+            </div>
+            <div class="metric-card">
+                <div class="number-container"><span class="count" data-target="7">0</span><span>x7</span></div>
+                <p>Countries / Languages</p>
             </div>
         </div>
-    </section>
 
-    <!-- Player Showcase -->
-    <section class="featured-showcase">
-        <div class="video-background">
-            <iframe id="vimeo-player" src="https://player.vimeo.com/video/1178274878?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&playsinline=1" 
-                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01.</span>
+                <h2>Path & Expertise</h2>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">PRESENT</div>
+                <div class="exp-body">
+                    <h3>Senior Film Editor</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
+                        <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | In collaboration with Lukas Zpira
+                    </p>
+                    <ul><li>Editing symbolic narratives and cinematographic film essays.</li></ul>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">2023 - 2025</div>
+                <div class="exp-body">
+                    <h3>Founder & Lead Documentarian</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
+                        <span class="studio-link" style="cursor: default;">ORBINEA STUDIO network</span> | Webedia Network
+                    </p>
+                    <ul>
+                        <li><strong>Editing Direction:</strong> Delivered 60+ 90-minute documentary features.</li>
+                        <li><strong>Archive Journalism:</strong> Global sourcing and fact-checking (NASA, National Archives).</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        
-        <div class="video-overlay"></div>
-        
-        <div class="featured-content">
-            <h2 class="featured-title">Editorial Vision</h2>
-            <h3 class="featured-main-title">Narrative<br>Showcase</h3>
-            <p class="featured-desc">
-                Specialized in "human-free" documentary storytelling. Reconstructing complex Science & Nature themes through high-intensity editing rhythms and immersive sound design.
+
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02.</span>
+                <h2>Documentary Portfolio</h2>
+            </div>
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <div class="doc-meta"><span>95 MIN</span><span class="lang-badge">Earth & Life</span></div>
+                    <h4>Earth & Life Sciences</h4>
+                    <p style="font-size: 0.9rem; color: #888;">Narratives on Earth's birth, origins of life, climate cycles, and paleontology.</p>
+                    <span class="tech-spec">Long Institutional Format</span>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-meta"><span>85 - 90 MIN</span><span class="lang-badge">Archives</span></div>
+                    <h4>History & Civilizations</h4>
+                    <p style="font-size: 0.9rem; color: #888;">Restoration and enhancement of period documents for long-format broadcast.</p>
+                    <span class="tech-spec">Historical Rigor</span>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-meta"><span>PIPELINE</span><span class="lang-badge">Ops</span></div>
+                    <h4>Industrial Post-Prod</h4>
+                    <p style="font-size: 0.9rem; color: #888;">High-volume delivery for VOD distribution without editorial compromise.</p>
+                    <span class="tech-spec">HD / 4K Scaling</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-cta">
+                <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View CV (PDF)</a>
+                <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">WhatsApp</a>
+            </div>
+            <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
+                © EMERIC PERILHOU | <span style="color: var(--accent); font-weight: 900;">REMOTE</span> / Istanbul / Paris
             </p>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <div class="metrics" id="metrics-section">
-        <div class="metric-card">
-            <div class="number-container">
-                <span class="count" data-target="100">0</span><span>M+</span>
-            </div>
-            <p>Total Views</p>
-        </div>
-        <div class="metric-card">
-            <div class="number-container">
-                <span class="count" data-target="60">0</span><span>+</span>
-            </div>
-            <p>Long-Format Films</p>
-        </div>
-        <div class="metric-card">
-            <div class="number-container">
-                <span class="count" data-target="7">0</span><span>x</span><span class="count" data-target="7">0</span>
-            </div>
-            <p>Countries / Languages</p>
-        </div>
+        </footer>
     </div>
 
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">01.</span>
-            <h2>Selected Experience</h2>
-        </div>
-
-        <div class="exp-item">
-            <div class="exp-date">PRESENT</div>
-            <div class="exp-body">
-                <h3>Lead Editor & Sound Designer</h3>
-                <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
-                    <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | Collaboration with Lukas Zpira
-                </p>
-                <ul>
-                    <li>High-end cinematic storytelling for international productions.</li>
-                    <li>Crafting immersive soundscapes and audio design for narrative works.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="exp-item">
-            <div class="exp-date">PREVIOUS</div>
-            <div class="exp-body">
-                <h3>Founder & Lead Editor</h3>
-                <p style="color: var(--accent); margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">DCK Production | Webedia Network</p>
-                <ul>
-                    <li>Supervised over 60 documentaries with strict narrative constraints (archive-only).</li>
-                    <li>Global distribution: Adapted editing pacing for 7 different language dubs.</li>
-                    <li>Concept reconstruction for complex Science & Nature documentary features.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase;">Building stories<br>that matter</h3>
-        
-        <div class="footer-cta">
-            <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View Resume</a>
-            <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">Contact on WhatsApp</a>
-        </div>
-
-        <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
-            © EMERIC PERILHOU | Istanbul • Paris • Remote
-        </p>
-    </footer>
-
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        window.onload = function() {
-            const iframe = document.getElementById('vimeo-player');
-            if(iframe) {
-                iframe.contentWindow.postMessage('{"method":"play"}', '*');
-            }
+        let player;
+        let isMuted = false;
+        let isPlaying = true;
 
+        function startExperience() {
+            const splash = document.getElementById('splash-screen');
+            const showcase = document.getElementById('showcase-section');
+            
+            // 1. Hide splash
+            splash.style.opacity = '0';
+            
+            setTimeout(() => {
+                splash.style.display = 'none';
+                document.body.classList.add('active');
+                
+                // 2. Initialise Player
+                const iframe = document.querySelector('#vimeo-player');
+                player = new Vimeo.Player(iframe);
+                player.setVolume(1);
+                player.play();
+
+                // 3. Scroll automatique fluide vers le showcase
+                showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                startStats();
+            }, 1000);
+        }
+
+        function togglePlay() {
+            const btn = document.getElementById('toggle-video');
+            if (isPlaying) {
+                player.pause();
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+            } else {
+                player.play();
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function toggleMute() {
+            const btn = document.getElementById('toggle-audio');
+            if (isMuted) {
+                player.setVolume(1);
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+            } else {
+                player.setVolume(0);
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+            }
+            isMuted = !isMuted;
+        }
+
+        function startStats() {
             const metricsSection = document.getElementById('metrics-section');
             const counters = document.querySelectorAll('.count');
             const cards = document.querySelectorAll('.metric-card');
-            let started = false;
-
-            const startAnimation = () => {
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, index * 200);
-                });
-
-                counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 2000; 
-                    const increment = target / (duration / 16); 
-
-                    const updateCount = () => {
-                        const current = +counter.innerText;
-                        if (current < target) {
-                            counter.innerText = Math.ceil(current + increment);
-                            setTimeout(updateCount, 16);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                });
-            };
-
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && !started) {
-                        startAnimation();
-                        started = true;
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), i * 200));
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const updateCount = () => {
+                                const current = +counter.innerText;
+                                const inc = target / 120;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current + inc);
+                                    setTimeout(updateCount, 16);
+                                } else counter.innerText = target;
+                            };
+                            updateCount();
+                        });
                     }
                 });
             }, { threshold: 0.3 });
-
-            if(metricsSection) observer.observe(metricsSection);
-        };
+            observer.observe(metricsSection);
+        }
     </script>
-
 </body>
 </html>
