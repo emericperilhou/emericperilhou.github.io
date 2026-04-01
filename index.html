@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,7 +146,7 @@
             pointer-events: none;
         }
 
-        /* CAPTEUR DE SOURIS POUR LE HOVER */
+        /* MOUSE CAPTURE LAYER FOR HOVER */
         .mouse-capture-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -162,7 +162,7 @@
             pointer-events: none;
         }
 
-        /* Texte qui s'estompe */
+        /* Fading content */
         .featured-content {
             position: relative;
             z-index: 60; 
@@ -177,7 +177,7 @@
             opacity: 0;
         }
 
-        /* Réapparition au hover du capteur */
+        /* Re-appear on hover */
         .mouse-capture-layer:hover ~ .featured-content {
             opacity: 1 !important;
         }
@@ -185,7 +185,7 @@
         .featured-title { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
         .featured-main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
 
-        /* Contrôles de la vidéo */
+        /* Video Controls */
         .video-controls {
             position: absolute;
             bottom: 40px;
@@ -266,7 +266,6 @@
         </section>
 
         <section class="featured-showcase" id="video-section">
-            <!-- Couche invisible pour intercepter la souris au-dessus de la vidéo -->
             <div class="mouse-capture-layer"></div>
             
             <div class="video-background">
@@ -280,7 +279,7 @@
             <div class="featured-content" id="video-text-overlay">
                 <h2 class="featured-title">Editorial Power</h2>
                 <h3 class="featured-main-title">Narrative Showcase</h3>
-                <p style="color: #ccc; max-width: 600px; font-weight: 300;">Architecture narrative de 95 minutes. Gestion experte d'archives haute densité et de scripts académiques.</p>
+                <p style="color: #ccc; max-width: 600px; font-weight: 300;">95-minute narrative architecture. Expert management of high-density archives and academic scripts.</p>
             </div>
 
             <div class="video-controls">
@@ -296,46 +295,46 @@
         <div class="metrics" id="metrics-section">
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="100">0</span><span>M+</span></div>
-                <p>Vues Totales</p>
+                <p>Total Views</p>
             </div>
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="60">0</span><span>+</span></div>
-                <p>Documentaires 90-min</p>
+                <p>90-min Documentaries</p>
             </div>
             <div class="metric-card">
                 <div class="number-container"><span class="count" data-target="7">0</span><span>x7</span></div>
-                <p>Pays / Langues</p>
+                <p>Countries / Languages</p>
             </div>
         </div>
 
         <div class="container">
             <div class="section-header">
                 <span class="section-number">01.</span>
-                <h2>Expérience & Expertise</h2>
+                <h2>Experience & Expertise</h2>
             </div>
             <div class="exp-item">
-                <div class="exp-date">ACTUEL</div>
+                <div class="exp-date">PRESENT</div>
                 <div class="exp-body">
                     <h3>Senior Film Editor</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">DCK Studio | En collaboration avec Lukas Zpira</p>
-                    <ul><li>Montage de récits symboliques et d'essais cinématographiques.</li></ul>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">DCK Studio | In collaboration with Lukas Zpira</p>
+                    <ul><li>Editing symbolic narratives and cinematic essays.</li></ul>
                 </div>
             </div>
             <div class="exp-item">
                 <div class="exp-date">2023 - 2025</div>
                 <div class="exp-body">
-                    <h3>Fondateur & Lead Documentariste</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">ORBINEA STUDIO | Réseau Webedia</p>
+                    <h3>Founder & Lead Documentarian</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">ORBINEA STUDIO | Webedia Network</p>
                     <ul>
-                        <li><strong>Direction Éditoriale :</strong> Réalisation de plus de 60 longs-métrages documentaires.</li>
-                        <li><strong>Journalisme d'Archive :</strong> Sourcing mondial et fact-checking (NASA, National Archives).</li>
+                        <li><strong>Editorial Direction:</strong> Produced over 60 long-format documentary features.</li>
+                        <li><strong>Archive Journalism:</strong> Global sourcing and fact-checking (NASA, National Archives).</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <footer class="footer">
-            <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">Voir CV (PDF)</a>
+            <a href="https://drive.google.com/file/d/11ukW9QQYlb_63DTjpzJ4oMAT2m_PRt6r/view?usp=sharing" target="_blank" class="btn">View CV (PDF)</a>
             <a href="https://wa.me/905537514995" target="_blank" class="btn btn-outline">WhatsApp</a>
             <p style="margin-top: 60px; font-size: 0.7rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase;">
                 © EMERIC PERILHOU | <span style="color: var(--accent); font-weight: 900;">REMOTE</span> / Istanbul / Paris
@@ -365,13 +364,11 @@
                 vPlayer.play();
                 vPlayer.setVolume(1);
                 
-                // Centrage automatique forcé vers la vidéo dès le chargement
                 window.scrollTo({
                     top: videoSec.offsetTop,
                     behavior: 'smooth'
                 });
 
-                // Masquage automatique du texte après un court délai
                 setTimeout(() => {
                     overlay.classList.add('is-hidden');
                 }, 3500);
