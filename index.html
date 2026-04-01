@@ -134,6 +134,7 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
+            background: #000;
         }
 
         .video-background iframe {
@@ -145,6 +146,16 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
+        }
+
+        /* Mobile specific video framing */
+        @media (max-aspect-ratio: 1/1) {
+            .video-background iframe {
+                width: 300vw; /* Increase width to allow centering crop on vertical screens */
+                height: 100vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .video-overlay {
@@ -238,6 +249,7 @@
             .metrics { grid-template-columns: 1fr; }
             h1.main-title { font-size: 4rem; }
             .video-controls { bottom: 20px; right: 20px; }
+            .featured-content { padding: 30px; bottom: 80px; }
         }
     </style>
 </head>
@@ -262,11 +274,12 @@
             </div>
         </section>
 
-        <!-- L'ID id="showcase-section" a été ajouté pour le scroll automatique -->
+        <!-- Showcase Player Section -->
         <section class="featured-showcase" id="showcase-section">
             <div class="video-background">
+                <!-- Added background=1 and color=080808 for smoother mobile loading -->
                 <iframe id="vimeo-player" 
-                        src="https://player.vimeo.com/video/1178210537?api=1&autoplay=0&loop=1&byline=0&title=0&muted=0" 
+                        src="https://player.vimeo.com/video/1178210537?api=1&autoplay=0&loop=1&byline=0&title=0&muted=0&background=0&color=d4af37" 
                         frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
             
@@ -380,21 +393,24 @@
         function startExperience() {
             const splash = document.getElementById('splash-screen');
             const showcase = document.getElementById('showcase-section');
+            const iframe = document.querySelector('#vimeo-player');
             
-            // 1. Hide splash
+            // Initialise Player before hiding splash to start buffering
+            player = new Vimeo.Player(iframe);
+            
             splash.style.opacity = '0';
             
             setTimeout(() => {
                 splash.style.display = 'none';
                 document.body.classList.add('active');
                 
-                // 2. Initialise Player
-                const iframe = document.querySelector('#vimeo-player');
-                player = new Vimeo.Player(iframe);
+                // Audio and Playback
                 player.setVolume(1);
-                player.play();
+                player.play().catch(error => {
+                    console.log("Autoplay blocked, user interaction needed");
+                });
 
-                // 3. Scroll automatique fluide vers le showcase
+                // Smooth Scroll to Showcase
                 showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
                 startStats();
