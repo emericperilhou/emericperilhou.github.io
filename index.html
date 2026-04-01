@@ -118,7 +118,7 @@
         .subtitle { color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; font-weight: 700; }
         .location { font-size: 0.9rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
 
-        /* Showcase & Video Section */
+        /* Showcase Section */
         .featured-showcase {
             position: relative;
             width: 100%;
@@ -146,7 +146,6 @@
             pointer-events: none;
         }
 
-        /* MOUSE CAPTURE LAYER FOR HOVER */
         .mouse-capture-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -162,7 +161,6 @@
             pointer-events: none;
         }
 
-        /* Fading content */
         .featured-content {
             position: relative;
             z-index: 60; 
@@ -173,14 +171,8 @@
             pointer-events: none; 
         }
 
-        .featured-content.is-hidden {
-            opacity: 0;
-        }
-
-        /* Re-appear on hover */
-        .mouse-capture-layer:hover ~ .featured-content {
-            opacity: 1 !important;
-        }
+        .featured-content.is-hidden { opacity: 0; }
+        .mouse-capture-layer:hover ~ .featured-content { opacity: 1 !important; }
 
         .featured-title { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
         .featured-main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
@@ -229,6 +221,24 @@
         .exp-item { display: grid; grid-template-columns: 250px 1fr; gap: 50px; margin-bottom: 80px; padding-bottom: 80px; border-bottom: 1px solid var(--border); }
         .exp-date { font-weight: 700; color: var(--text-dim); font-size: 0.9rem; }
         .exp-body h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
+        
+        .studio-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .studio-link:hover {
+            border-bottom-color: var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .partner-text {
+            color: #fff;
+            text-transform: uppercase;
+        }
+
         .exp-body li { margin-bottom: 15px; padding-left: 25px; position: relative; list-style: none; color: #bbb; }
         .exp-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
@@ -316,7 +326,9 @@
                 <div class="exp-date">PRESENT</div>
                 <div class="exp-body">
                     <h3>Senior Film Editor</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">DCK Studio | In collaboration with Lukas Zpira</p>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
+                        <a href="https://dckstudio.github.io/" target="_blank" class="studio-link">DCK Studio</a> | <span class="partner-text">In collaboration with Lukas Zpira</span>
+                    </p>
                     <ul><li>Editing symbolic narratives and cinematic essays.</li></ul>
                 </div>
             </div>
@@ -324,7 +336,9 @@
                 <div class="exp-date">2023 - 2025</div>
                 <div class="exp-body">
                     <h3>Founder & Lead Documentarian</h3>
-                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent);">ORBINEA STUDIO | Webedia Network</p>
+                    <p style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1em;">
+                        <a href="https://www.youtube.com/@orbinea" target="_blank" class="studio-link">ORBINEA STUDIO network</a> | Webedia Network
+                    </p>
                     <ul>
                         <li><strong>Editorial Direction:</strong> Produced over 60 long-format documentary features.</li>
                         <li><strong>Archive Journalism:</strong> Global sourcing and fact-checking (NASA, National Archives).</li>
