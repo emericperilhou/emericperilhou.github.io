@@ -1,34 +1,20 @@
-<div class="v-card" onclick="openPlayer('Z2RX1dLX_CM')">
-    <div class="v-thumb" style="background-image: url('https://img.youtube.com/vi/Z2RX1dLX_CM/maxresdefault.jpg');"></div>
-    <div class="v-play">▶</div>
-    <div class="v-label">
-        <b>LA ODISEA DE LA TIERRA</b><br>
-        <span style="color:#ff0000;">8.2M VIEWS | NARRATIVE EDITOR</span>
-    </div>
-</div>
-
-<script>
 function openPlayer(id) {
-    // On définit la taille de la fenêtre "Player"
     const w = 1280;
     const h = 720;
-    const left = (window.innerWidth / 2) - (w / 2);
-    const top = (window.innerHeight / 2) - (h / 2);
+    const left = (window.screen.width / 2) - (w / 2);
+    const top = (window.screen.height / 2) - (h / 2);
     
-    // LE HACK : On ouvre une fenêtre indépendante qui BYPASSE l'iframe
-    // On utilise youtube-nocookie pour éviter les trackers de merde
-    const url = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    // HACK : mute=1 force l'autoplay immédiat sur Chrome, LibreWolf et Safari
+    // autoplay=1 + playlist=${id} + loop=1 aide aussi à bypasser les restrictions
+    const url = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&showinfo=0&modestbranding=1&enablejsapi=1&playlist=${id}`;
     
-    window.open(url, 'DCK_STUDIO_PLAYER', 
+    const playerWin = window.open('', 'DCK_STUDIO_PLAYER', 
         `toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=${w}, height=${h}, top=${top}, left=${left}`
     );
-}
-</script>
 
-<style>
-    .v-card { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; cursor: pointer; border: 1px solid #222; }
-    .v-thumb { width: 100%; height: 100%; background-size: cover; opacity: 0.5; transition: 0.4s; }
-    .v-card:hover .v-thumb { opacity: 1; }
-    .v-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: #fff; z-index: 10; text-shadow: 0 0 20px #ff0000; }
-    .v-label { position: absolute; bottom: 15px; left: 15px; color: #fff; font-family: 'Inter', sans-serif; pointer-events: none; }
-</style>
+    // Si la fenêtre est déjà ouverte, on la met au premier plan
+    if (playerWin) {
+        playerWin.location.href = url;
+        playerWin.focus();
+    }
+}
