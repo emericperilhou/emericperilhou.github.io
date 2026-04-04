@@ -1,37 +1,34 @@
-<style>
-    .v-card { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid #222; cursor: pointer; overflow: hidden; }
-    .v-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.6; transition: 0.3s; }
-    .v-card:hover .v-thumb { opacity: 1; transform: scale(1.05); }
-    .v-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: rgba(255,0,0,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; z-index: 2; border: 2px solid #fff; }
-    /* La Lightbox qui hack le referrer */
-    .v-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; align-items: center; justify-content: center; }
-    .v-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; }
-</style>
-
-<div class="v-card" onclick="openHack('Z2RX1dLX_CM')">
+<div class="v-card" onclick="openPlayer('Z2RX1dLX_CM')">
     <div class="v-thumb" style="background-image: url('https://img.youtube.com/vi/Z2RX1dLX_CM/maxresdefault.jpg');"></div>
     <div class="v-play">▶</div>
-    <div style="position:absolute; bottom:10px; left:15px; color:#fff; font-family:sans-serif; text-shadow: 2px 2px 4px #000;">
-        <b style="font-size:1.2rem; text-transform:uppercase;">La Odisea de la Tierra</b><br>
-        <span style="color:#ff0000; font-weight:bold;">8.2M VIEWS | NARRATIVE EDITOR</span>
+    <div class="v-label">
+        <b>LA ODISEA DE LA TIERRA</b><br>
+        <span style="color:#ff0000;">8.2M VIEWS | NARRATIVE EDITOR</span>
     </div>
 </div>
 
-<div id="videoOverlay" class="v-overlay">
-    <span class="v-close" onclick="closeHack()">&times;</span>
-    <div id="playerContainer" style="width: 90%; max-width: 1200px; aspect-ratio: 16/9;"></div>
-</div>
-
 <script>
-function openHack(id) {
-    const container = document.getElementById('playerContainer');
-    const overlay = document.getElementById('videoOverlay');
-    // ON HACK LE DOMAINE : On utilise une instance Invidious qui masque ton GitHub
-    container.innerHTML = `<iframe src="https://yewtu.be/embed/${id}?autoplay=1" style="width:100%; height:100%; border:none;" allowfullscreen referrerpolicy="no-referrer"></iframe>`;
-    overlay.style.display = 'flex';
-}
-function closeHack() {
-    document.getElementById('videoOverlay').style.display = 'none';
-    document.getElementById('playerContainer').innerHTML = '';
+function openPlayer(id) {
+    // On définit la taille de la fenêtre "Player"
+    const w = 1280;
+    const h = 720;
+    const left = (window.innerWidth / 2) - (w / 2);
+    const top = (window.innerHeight / 2) - (h / 2);
+    
+    // LE HACK : On ouvre une fenêtre indépendante qui BYPASSE l'iframe
+    // On utilise youtube-nocookie pour éviter les trackers de merde
+    const url = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    
+    window.open(url, 'DCK_STUDIO_PLAYER', 
+        `toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=${w}, height=${h}, top=${top}, left=${left}`
+    );
 }
 </script>
+
+<style>
+    .v-card { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; cursor: pointer; border: 1px solid #222; }
+    .v-thumb { width: 100%; height: 100%; background-size: cover; opacity: 0.5; transition: 0.4s; }
+    .v-card:hover .v-thumb { opacity: 1; }
+    .v-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: #fff; z-index: 10; text-shadow: 0 0 20px #ff0000; }
+    .v-label { position: absolute; bottom: 15px; left: 15px; color: #fff; font-family: 'Inter', sans-serif; pointer-events: none; }
+</style>
