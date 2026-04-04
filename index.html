@@ -1,28 +1,37 @@
-<div class="work-card" style="margin-bottom: 40px; background: #050505; border: 1px solid #1a1a1a;">
-    
-    <div class="video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000;">
-        
-        <iframe 
-            src="https://www.youtube.com/embed/Z2RX1dLX_CM?rel=0&modestbranding=1&showinfo=0&widget_referrer=https://google.com" 
-            referrerpolicy="no-referrer"
-            sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-            allowfullscreen>
-        </iframe>
+<style>
+    .v-card { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid #222; cursor: pointer; overflow: hidden; }
+    .v-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.6; transition: 0.3s; }
+    .v-card:hover .v-thumb { opacity: 1; transform: scale(1.05); }
+    .v-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: rgba(255,0,0,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; z-index: 2; border: 2px solid #fff; }
+    /* La Lightbox qui hack le referrer */
+    .v-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; align-items: center; justify-content: center; }
+    .v-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; }
+</style>
 
-    </div>
-
-    <div class="work-info" style="padding: 20px;">
-        <h3 style="color: #fff; text-transform: uppercase; margin: 0; font-size: 1.4rem; letter-spacing: 1px;">
-            La Odisea de la Tierra
-        </h3>
-        <p style="color: #666; margin: 8px 0; font-size: 0.9rem; font-family: monospace;">
-            NARRATIVE EDITOR | 8.2M VIEWS | FULL DOCUMENTARY
-        </p>
-        
-        <a href="https://www.youtube.com/watch?v=Z2RX1dLX_CM" target="_blank" 
-           style="display: inline-block; margin-top: 10px; color: #ff0000; text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid #ff0000;">
-           LIEN DIRECT YOUTUBE (SI RESTRICTION)
-        </a>
+<div class="v-card" onclick="openHack('Z2RX1dLX_CM')">
+    <div class="v-thumb" style="background-image: url('https://img.youtube.com/vi/Z2RX1dLX_CM/maxresdefault.jpg');"></div>
+    <div class="v-play">▶</div>
+    <div style="position:absolute; bottom:10px; left:15px; color:#fff; font-family:sans-serif; text-shadow: 2px 2px 4px #000;">
+        <b style="font-size:1.2rem; text-transform:uppercase;">La Odisea de la Tierra</b><br>
+        <span style="color:#ff0000; font-weight:bold;">8.2M VIEWS | NARRATIVE EDITOR</span>
     </div>
 </div>
+
+<div id="videoOverlay" class="v-overlay">
+    <span class="v-close" onclick="closeHack()">&times;</span>
+    <div id="playerContainer" style="width: 90%; max-width: 1200px; aspect-ratio: 16/9;"></div>
+</div>
+
+<script>
+function openHack(id) {
+    const container = document.getElementById('playerContainer');
+    const overlay = document.getElementById('videoOverlay');
+    // ON HACK LE DOMAINE : On utilise une instance Invidious qui masque ton GitHub
+    container.innerHTML = `<iframe src="https://yewtu.be/embed/${id}?autoplay=1" style="width:100%; height:100%; border:none;" allowfullscreen referrerpolicy="no-referrer"></iframe>`;
+    overlay.style.display = 'flex';
+}
+function closeHack() {
+    document.getElementById('videoOverlay').style.display = 'none';
+    document.getElementById('playerContainer').innerHTML = '';
+}
+</script>
