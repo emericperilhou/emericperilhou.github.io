@@ -304,6 +304,52 @@
         }
         .badge.gold { border-color: var(--accent); color: var(--accent); }
 
+        /* --- MASTER ARCHIVE SECTION --- */
+        #master-archive {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #050505;
+        }
+        #master-archive.open { max-height: 5000px; padding-bottom: 120px; }
+
+        .archive-bandeau {
+            width: 100%;
+            border-bottom: 1px solid #111;
+            padding: 40px 0;
+        }
+        .archive-header-btn {
+            width: 100%;
+            background: #000;
+            border: 1px solid #1a1a1a;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .archive-header-btn:hover { border-color: var(--accent); background: #080808; }
+        
+        .archive-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            color: #666;
+            text-align: left;
+            display: none;
+            padding: 20px;
+            background: #000;
+            border: 1px solid #1a1a1a;
+            border-top: none;
+        }
+        .archive-table.active { display: table; }
+        .archive-table th { padding: 25px 15px; color: #444; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #111; }
+        .archive-table td { padding: 18px 15px; border-bottom: 1px solid #111; }
+        .archive-table tr:hover td { color: #fff; background: #050505; }
+        .archive-table td:first-child { color: #ccc; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; }
+
         /* --- COMMON LAYOUT --- */
         section {
             padding: 120px 40px;
@@ -379,12 +425,13 @@
             align-items: center;
             justify-content: center;
             min-width: 200px;
+            cursor: pointer;
         }
-        .btn-cv { border: 1px solid var(--accent); color: var(--accent); }
+        .btn-cv { border: 1px solid var(--accent); color: var(--accent); background: transparent; }
         .btn-cv:hover { background: var(--accent); color: #000; }
-        .btn-mail { border: 1px solid #444; color: #fff; }
+        .btn-mail { border: 1px solid #444; color: #fff; text-decoration: none;}
         .btn-mail:hover { background: #fff; color: #000; border-color: #fff; }
-        .btn-whatsapp { border: 1px solid #25D366; color: #25D366; }
+        .btn-whatsapp { border: 1px solid #25D366; color: #25D366; text-decoration: none;}
         .btn-whatsapp:hover { background: #25D366; color: #000; }
         
         footer { padding: 60px 40px; border-top: 1px solid #111; text-align: center; }
@@ -444,12 +491,12 @@
                 <span class="stat-label">TOTAL VIEWS (M+)</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="60">0</span>
-                <span class="stat-label">90-MIN DOCUMENTARIES</span>
+                <span class="stat-number" data-target="48">0</span>
+                <span class="stat-label">DOCS PRODUCED IN 2024</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" data-target="7">0</span>
-                <span class="stat-label">COUNTRIES / LANGUAGES (7x7)</span>
+                <span class="stat-label">COUNTRIES / LANGUAGES</span>
             </div>
         </div>
 
@@ -485,15 +532,295 @@
                         <p class="work-desc">Advanced space archive curation. Cross-referencing every frame with astrophysical data for absolute narrative truth.</p>
                         <div class="badge-list">
                             <span class="badge gold">1.4M VIEWS</span>
-                            <span class="badge">CURATION</span>
+                            <span class="badge">LONG-FORMAT</span>
+                            <span class="badge">ORBINEA</span>
+                        </div>
+                    </div>
+                </div>
+                  
+               <div class="work-card">
+                    <div class="work-thumb-wrapper" onclick="openNarrativePlayer('L3NBOm9KkHQ', 'The time of Pangea')">
+                        <div class="work-thumb" style="background-image: url('https://i.ytimg.com/vi/L3NBOm9KkHQ/maxresdefault.jpg');"></div>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-label">NARRATIVE EDITOR / POST-PRODUCTION</span>
+                        <h3>The time of Pangea</h3>
+                        <p class="work-desc">Narrative analysis and management of complex production workflows for long-format science docs.</p>
+                        <div class="badge-list">
+                            <span class="badge gold">3.8M VIEWS</span>
+                            <span class="badge">LONG-FORMAT</span>
+                            <span class="badge">ORBINEA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-thumb-wrapper" onclick="openNarrativePlayer('Lx8XXyJDfz8', 'The Giant Insects')">
+                        <div class="work-thumb" style="background-image: url('https://i.ytimg.com/vi/Lx8XXyJDfz8/maxresdefault.jpg');"></div>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-label">ARCHIVE SPECIALIST / VFX</span>
+                        <h3>The time of the Giant Insects</h3>
+                        <p class="work-desc">Digital restoration and seamless integration of complex archival visual assets.</p>
+                        <div class="badge-list">
+                            <span class="badge gold">3.1M VIEWS</span>
+                            <span class="badge">LONG-FORMAT</span>
+                            <span class="badge">ORBINEA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-thumb-wrapper" onclick="openNarrativePlayer('NN77q9L0IRA', 'Beyond the Atom')">
+                        <div class="work-thumb" style="background-image: url('https://i.ytimg.com/vi/NN77q9L0IRA/maxresdefault.jpg');"></div>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-label">LEAD EDITOR / STORYTELLING</span>
+                        <h3>Beyond the Atom</h3>
+                        <p class="work-desc">Building an immersive narrative based on scientific data sets and macro-archival footage.</p>
+                        <div class="badge-list">
+                            <span class="badge gold">1.9M VIEWS</span>
+                            <span class="badge">LONG-FORMAT</span>
+                            <span class="badge">ORBINEA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-thumb-wrapper" onclick="openNarrativePlayer('8LGIUtGefeM', 'To the Edge of the Universe')">
+                        <div class="work-thumb" style="background-image: url('https://i.ytimg.com/vi/8LGIUtGefeM/maxresdefault.jpg');"></div>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-label">NARRATIVE LEAD / CURATION</span>
+                        <h3>To the Edge of the Universe</h3>
+                        <p class="work-desc">Coordination of post-production and immersive scientific storytelling for global audiences.</p>
+                        <div class="badge-list">
+                            <span class="badge gold">1.1M VIEWS</span>
+                            <span class="badge">LONG-FORMAT</span>
                             <span class="badge">ORBINEA</span>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="archive-footer" style="text-align: center; margin-top: 80px;">
-                <a href="https://www.youtube.com/@OrbineaStudios/videos" target="_blank" class="btn-cta btn-cv" style="display:inline-flex;">Explore 60+ Documentaries</a>
+            
+            <div style="text-align: center; margin-top: 80px;">
+                <button onclick="toggleMasterArchive()" class="btn-cta btn-cv" id="archive-toggle-btn">
+                    Explore 2024 Production Log [48 Projects] [+]
+                </button>
+            </div>
+
+            <div id="master-archive">
+                <div style="max-width: 1200px; margin: 80px auto 0 auto; border-top: 1px solid #1a1a1a; padding-top: 50px;">
+                    <p style="text-align: center; font-size: 10px; color: var(--accent); letter-spacing: 0.5em; margin-bottom: 40px; font-weight: 900;">2024 PRODUCTION LOGS</p>
+                    
+                    <div class="archive-bandeau">
+                        <button class="archive-header-btn" onclick="toggleTable('earth-table')">
+                            <span style="font-size: 14px; letter-spacing: 3px; font-weight: 900;">01 / EARTH & HISTORY</span>
+                            <span style="font-size: 9px; color: var(--accent);">FULL LIST [ACTIVE]</span>
+                        </button>
+                        <table class="archive-table" id="earth-table">
+                          <tbody id="earth-table-body">
+    <tr onclick="openNarrativePlayer('3CQNVRB6O-c', 'The First Plants on Earth')" style="cursor:pointer;">
+        <td>▶ THE FIRST PLANTS ON EARTH</td>
+        <td>01:25:22</td>
+        <td style="text-align: right; color: var(--accent);">1.2M VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('4uNx2DVWEi8', 'The World of Dinosaurs')" style="cursor:pointer;">
+        <td>▶ THE WORLD OF DINOSAURS</td>
+        <td>01:24:43</td>
+        <td style="text-align: right; color: var(--accent);">1.1M VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('jOAzGuGPb8Y', 'Journey to the Center of the Earth')" style="cursor:pointer;">
+        <td>▶ JOURNEY TO THE CENTER OF THE EARTH</td>
+        <td>01:22:15</td>
+        <td style="text-align: right; color: var(--accent);">898K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Earth Before the Dinosaurs')" style="cursor:pointer;">
+        <td>▶ THE EARTH BEFORE THE DINOSAURS</td>
+        <td>01:15:30</td>
+        <td style="text-align: right; color: var(--accent);">731K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Giants of Prehistory')" style="cursor:pointer;">
+        <td>▶ THE GIANTS OF PREHISTORY</td>
+        <td>01:18:20</td>
+        <td style="text-align: right; color: var(--accent);">510K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('2aRLVtiLkiU', 'The Future of the Earth')" style="cursor:pointer;">
+        <td>▶ THE FUTURE OF THE EARTH</td>
+        <td>01:20:10</td>
+        <td style="text-align: right; color: var(--accent);">408K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('Uq_3nJ9b_Sg', 'The History of the Earth')" style="cursor:pointer;">
+        <td>▶ THE HISTORY OF THE EARTH</td>
+        <td>01:28:45</td>
+        <td style="text-align: right; color: var(--accent);">342K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Dawn of Life (Cambrian)')" style="cursor:pointer;">
+        <td>▶ THE DAWN OF LIFE (CAMBRIAN)</td>
+        <td>01:05:40</td>
+        <td style="text-align: right; color: var(--accent);">95K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Great Ordovician')" style="cursor:pointer;">
+        <td>▶ THE GREAT ORDOVICIAN</td>
+        <td>01:08:15</td>
+        <td style="text-align: right; color: var(--accent);">88K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Epic of the Silurian')" style="cursor:pointer;">
+        <td>▶ THE EPIC OF THE SILURIAN</td>
+        <td>01:10:25</td>
+        <td style="text-align: right; color: var(--accent);">82K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Evolution of Snakes')" style="cursor:pointer;">
+        <td>▶ THE EVOLUTION OF SNAKES</td>
+        <td>01:14:15</td>
+        <td style="text-align: right; right; color: var(--accent);">65K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'The Colonization of Land')" style="cursor:pointer;">
+        <td>▶ THE COLONIZATION OF LAND</td>
+        <td>01:19:55</td>
+        <td style="text-align: right; color: var(--accent);">58K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Earth: 4Ga, 3Ga and 500Ma')" style="cursor:pointer;">
+        <td>▶ THE EARTH: 4GA, 3GA AND 500MA</td>
+        <td>01:21:05</td>
+        <td style="text-align: right; color: var(--accent);">53K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'Appearance of Life / Ediacaran')" style="cursor:pointer;">
+        <td>▶ APPEARANCE OF LIFE / EDIACARAN</td>
+        <td>01:13:40</td>
+        <td style="text-align: right; color: var(--accent);">53K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Devonian: Age of Fish')" style="cursor:pointer;">
+        <td>▶ THE DEVONIAN: AGE OF FISH</td>
+        <td>01:07:55</td>
+        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'The First Animals and Predators')" style="cursor:pointer;">
+        <td>▶ THE FIRST ANIMALS AND PREDATORS</td>
+        <td>01:09:50</td>
+        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('XMKnDFY417E', 'The Great Ice Ages')" style="cursor:pointer;">
+        <td>▶ THE GREAT ICE AGES</td>
+        <td>01:11:30</td>
+        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'Leaving the Water')" style="cursor:pointer;">
+        <td>▶ LEAVING THE WATER</td>
+        <td>01:14:20</td>
+        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Earth After the Dinosaurs')" style="cursor:pointer;">
+        <td>▶ EARTH AFTER THE DINOSAURS</td>
+        <td>01:16:10</td>
+        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Zelandia / Super Volcanoes')" style="cursor:pointer;">
+        <td>▶ ZELANDIA / SUPER VOLCANOES</td>
+        <td>01:12:40</td>
+        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Titanoboa: The Giant Snake')" style="cursor:pointer;">
+        <td>▶ TITANOBOA: THE GIANT SNAKE</td>
+        <td>01:04:20</td>
+        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Permian Extinction')" style="cursor:pointer;">
+        <td>▶ THE PERMIAN EXTINCTION</td>
+        <td>01:15:45</td>
+        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Triassic: Awakening of Earth')" style="cursor:pointer;">
+        <td>▶ THE TRIASSIC: AWAKENING OF EARTH</td>
+        <td>01:12:30</td>
+        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Breaking of Pangea')" style="cursor:pointer;">
+        <td>▶ THE BREAKING OF PANGEA</td>
+        <td>01:09:15</td>
+        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'Panthalassa: The Unique Ocean')" style="cursor:pointer;">
+        <td>▶ PANTHALASSA: THE UNIQUE OCEAN</td>
+        <td>01:05:50</td>
+        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
+    </tr>
+</tbody>  
+                                </tbody>
+                        </table>
+                    </div>
+
+                    <div class="archive-bandeau">
+                        <button class="archive-header-btn" onclick="toggleTable('space-table')">
+                            <span style="font-size: 14px; letter-spacing: 3px; font-weight: 900;">02 / SPACE & COSMOS</span>
+                            <span style="font-size: 9px; color: var(--accent);">FULL LIST [ACTIVE]</span>
+                        </button>
+                        <table class="archive-table" id="space-table">
+                           <tbody id="space-table-body">
+    <tr onclick="openNarrativePlayer('fXvI_YInC6k', 'James Webb: The First Revelations')" style="cursor:pointer;">
+        <td>▶ JAMES WEBB: THE FIRST REVELATIONS</td>
+        <td>01:21:40</td>
+        <td style="text-align: right; color: var(--accent);">824K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('1_cWv_8dNr4', 'Journey to the Heart of Black Holes')" style="cursor:pointer;">
+        <td>▶ JOURNEY TO THE HEART OF BLACK HOLES</td>
+        <td>01:18:50</td>
+        <td style="text-align: right; color: var(--accent);">756K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'Voyages to the Stars')" style="cursor:pointer;">
+        <td>▶ VOYAGES TO THE STARS</td>
+        <td>01:27:38</td>
+        <td style="text-align: right; color: var(--accent);">250K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'Fabulous Journey to the Heart of the Universe')" style="cursor:pointer;">
+        <td>▶ FABULOUS JOURNEY TO THE HEART OF THE UNIVERSE</td>
+        <td>01:14:30</td>
+        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'The Observable Universe')" style="cursor:pointer;">
+        <td>▶ THE OBSERVABLE UNIVERSE</td>
+        <td>01:15:10</td>
+        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('48iMJOgeL3Y', 'The Worlds of Exoplanets')" style="cursor:pointer;">
+        <td>▶ THE WORLDS OF EXOPLANETS</td>
+        <td>01:12:20</td>
+        <td style="text-align: right; color: var(--accent);">110K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('H8B_8_pD8-k', 'Mars: The Search for Water and Life')" style="cursor:pointer;">
+        <td>▶ MARS: THE SEARCH FOR WATER AND LIFE</td>
+        <td>01:16:30</td>
+        <td style="text-align: right; color: var(--accent);">78K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('Gv8_6f6z0Yk', 'The History of the Moon')" style="cursor:pointer;">
+        <td>▶ THE HISTORY OF THE MOON</td>
+        <td>01:22:50</td>
+        <td style="text-align: right; color: var(--accent);">72K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('48iMJOgeL3Y', 'Trappist-1 System')" style="cursor:pointer;">
+        <td>▶ TRAPPIST-1 SYSTEM</td>
+        <td>01:12:20</td>
+        <td style="text-align: right; color: var(--accent);">10K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('A-Fg1pD_kGo', 'The Conditions that Triggered the Big Bang')" style="cursor:pointer;">
+        <td>▶ THE CONDITIONS THAT TRIGGERED THE BIG BANG</td>
+        <td>01:23:45</td>
+        <td style="text-align: right; color: var(--accent);">1.3K VIEWS</td>
+    </tr>
+    <tr onclick="openNarrativePlayer('aXsWymhbry0', 'What Triggered the Big Bang?')" style="cursor:pointer;">
+        <td>▶ WHAT TRIGGERED THE BIG BANG?</td>
+        <td>01:19:12</td>
+        <td style="text-align: right; color: var(--accent);">922 VIEWS</td>
+    </tr>
+</tbody> 
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -506,7 +833,7 @@
                 </div>
                 <div class="exp-item">
                     <h4>Visual Fact-Checking</h4>
-                    <p>Rigorous verification process ensuring every shot matches the voice-over and historical truth.</p>
+                    <p>Rigorous verification process ensuring every shot matches the voice-over and scientific truth.</p>
                 </div>
                 <div class="exp-item">
                     <h4>Digital Restoration</h4>
@@ -581,36 +908,39 @@
             }, 800);
         }
 
-        /* --- LE HACK FINAL : POPUP PLAYER --- */
+        // --- ARCHIVE ENGINE ---
+        function toggleMasterArchive() {
+            const archive = document.getElementById('master-archive');
+            const btn = document.getElementById('archive-toggle-btn');
+            archive.classList.toggle('open');
+            if(archive.classList.contains('open')) {
+                btn.textContent = "Close Archives [-]";
+                setTimeout(() => archive.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+            } else {
+                btn.textContent = "Explore 2024 Production Log [48 Projects] [+]";
+            }
+        }
+
+        function toggleTable(id) {
+            const table = document.getElementById(id);
+            const isVisible = table.classList.contains('active');
+            document.querySelectorAll('.archive-table').forEach(t => t.classList.remove('active'));
+            if(!isVisible) table.classList.add('active');
+        }
+
         function openNarrativePlayer(id, title) {
             const w = 1280;
             const h = 720;
             const left = (window.screen.width / 2) - (w / 2);
             const top = (window.screen.height / 2) - (h / 2);
-            
-            // On utilise youtube-nocookie et mute=1 pour forcer l'autoplay sans erreur 153
             const url = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&enablejsapi=1&playlist=${id}`;
-            
-            const playerWin = window.open('', 'EP_PORTFOLIO_PLAYER', 
-                `width=${w},height=${h},top=${top},left=${left},toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes`
-            );
-
+            const playerWin = window.open('', 'EP_PORTFOLIO_PLAYER', `width=${w},height=${h},top=${top},left=${left},status=no,resizable=yes`);
             if (playerWin) {
                 playerWin.document.write(`
-                    <html>
-                    <head><title>Emeric Perilhou | ${title}</title></head>
-                    <body style="margin:0; background:#000; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:sans-serif;">
+                    <html><body style="margin:0; background:#000; display:flex; flex-direction:column; align-items:center; justify-content:center;">
                         <iframe src="${url}" style="width:100vw; height:100vh; border:none;" allow="autoplay; fullscreen"></iframe>
-                        <div style="position:fixed; top:15px; right:20px;">
-                            <button onclick="window.close()" style="background:rgba(212,175,55,0.2); border:1px solid #d4af37; color:#d4af37; cursor:pointer; padding:8px 15px; font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Close / Back to Portfolio</button>
-                        </div>
-                        <div style="position:fixed; bottom:10px; left:20px; color:#444; font-size:9px; letter-spacing:2px;">EMERIC PERILHOU | NARRATIVE EDITOR</div>
-                    </body>
-                    </html>
-                `);
-                playerWin.focus();
-            } else {
-                alert("Please allow popups to watch the documentary.");
+                        <div style="position:fixed; top:15px; right:20px;"><button onclick="window.close()" style="background:rgba(212,175,55,0.2); border:1px solid #d4af37; color:#d4af37; cursor:pointer; padding:8px 15px; font-size:10px; text-transform:uppercase; font-weight:700;">Close</button></div>
+                    </body></html>`);
             }
         }
 
@@ -632,31 +962,29 @@
 
         function initStatsCounter() {
             const stats = document.querySelectorAll('.stat-number');
-            const observerOptions = { threshold: 0.5 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const endValue = parseInt(target.getAttribute('data-target'));
-                        animateCounter(target, endValue);
-                        observer.unobserve(target);
+                        animateCounter(entry.target, parseInt(entry.target.getAttribute('data-target')));
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.5 });
             stats.forEach(stat => observer.observe(stat));
         }
 
         function animateCounter(element, endValue) {
-            let startValue = 0;
-            const duration = 2000; 
-            const startTime = performance.now();
+            let startTime = performance.now();
             function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeValue = 1 - Math.pow(1 - progress, 3);
-                const currentValue = Math.floor(easeValue * endValue);
-                if (endValue === 7) { element.textContent = `${currentValue}x${currentValue}`; }
-                else { element.textContent = `${currentValue}${endValue === 100 ? 'M+' : '+'}`; }
+                let progress = Math.min((currentTime - startTime) / 2000, 1);
+                let val = Math.floor((1 - Math.pow(1 - progress, 3)) * endValue);
+                if (endValue === 7) {
+                    element.textContent = `${val}x${val}`;
+                } else if (endValue === 100) {
+                    element.textContent = `${val}M+`;
+                } else {
+                    element.textContent = `${val}`;
+                }
                 if (progress < 1) requestAnimationFrame(update);
             }
             requestAnimationFrame(update);
