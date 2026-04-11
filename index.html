@@ -444,7 +444,141 @@
             .stats-banner { grid-template-columns: 1fr; }
             .stat-item { border-right: none; border-bottom: 1px solid #1a1a1a; padding: 40px 20px; }
         }
-    </style>
+		/* ============================================= */
+/* --- PRODUCTION LOG STYLES (ZOOM GARANTI) --- */
+/* ============================================= */
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background: #000;
+}
+
+.log-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.log-table tbody tr:hover {
+    background: #080808;
+}
+
+.log-table td {
+    padding: 14px 12px;
+    vertical-align: middle;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #aaa;
+    border: none;
+    transition: color 0.25s ease;
+}
+
+.log-table tbody tr:hover td {
+    color: #fff;
+}
+
+.log-table td:first-child {
+    width: 60%;
+}
+
+/* Conteneur de la vignette */
+.thumb-container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    overflow: visible !important;
+}
+
+/* Style de base de la vignette */
+.thumb-container img {
+    width: 100px !important;
+    height: 56px !important;
+    object-fit: cover !important;
+    border-radius: 4px !important;
+    border: 1px solid #222 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 🔥 EFFET DE ZOOM - FORCÉ AVEC !IMPORTANT 🔥 */
+.log-table tbody tr:hover .thumb-container img {
+    transform: scale(1.15) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Titre du film */
+.thumb-container span,
+.thumb-container .film-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ddd;
+    transition: color 0.25s ease;
+    line-height: 1.3;
+}
+
+.log-table tbody tr:hover .thumb-container span,
+.log-table tbody tr:hover .film-title {
+    color: #fff;
+}
+
+/* Colonne durée */
+.log-table td:nth-child(2) {
+    width: 12%;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    letter-spacing: 1px;
+    color: #777;
+    text-align: center;
+}
+
+.log-table tbody tr:hover td:nth-child(2) {
+    color: #aaa;
+}
+
+/* Colonne vues */
+.log-views {
+    text-align: right;
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    width: 15%;
+    font-size: 0.8rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .log-table td {
+        padding: 12px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .thumb-container img {
+        width: 70px !important;
+        height: 40px !important;
+    }
+    
+    .thumb-container {
+        gap: 12px;
+    }
+    
+    .thumb-container span {
+        font-size: 0.7rem;
+    }
+    
+    .log-table td:nth-child(2) {
+        display: none;
+    }
+    
+    .log-views {
+        width: 25%;
+        font-size: 0.7rem;
+    }
+</style>
 </head>
 <body>
 
@@ -610,7 +744,7 @@
             
             <div style="text-align: center; margin-top: 80px;">
                 <button onclick="toggleMasterArchive()" class="btn-cta btn-cv" id="archive-toggle-btn">
-                    Explore 2024 Production Log [48 Projects] [+]
+                    Explore 2024 Production Log [46 Projects] [+]
                 </button>
             </div>
 
@@ -624,134 +758,174 @@
                             <span style="font-size: 9px; color: var(--accent);">FULL LIST [ACTIVE]</span>
                         </button>
                         <table class="archive-table" id="earth-table">
-                          <tbody id="earth-table-body">
-    <tr onclick="openNarrativePlayer('3CQNVRB6O-c', 'The First Plants on Earth')" style="cursor:pointer;">
-        <td>▶ THE FIRST PLANTS ON EARTH</td>
-        <td>01:25:22</td>
-        <td style="text-align: right; color: var(--accent);">1.2M VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('4uNx2DVWEi8', 'The World of Dinosaurs')" style="cursor:pointer;">
-        <td>▶ THE WORLD OF DINOSAURS</td>
-        <td>01:24:43</td>
-        <td style="text-align: right; color: var(--accent);">1.1M VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('jOAzGuGPb8Y', 'Journey to the Center of the Earth')" style="cursor:pointer;">
-        <td>▶ JOURNEY TO THE CENTER OF THE EARTH</td>
-        <td>01:22:15</td>
-        <td style="text-align: right; color: var(--accent);">898K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Earth Before the Dinosaurs')" style="cursor:pointer;">
-        <td>▶ THE EARTH BEFORE THE DINOSAURS</td>
-        <td>01:15:30</td>
-        <td style="text-align: right; color: var(--accent);">731K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Giants of Prehistory')" style="cursor:pointer;">
-        <td>▶ THE GIANTS OF PREHISTORY</td>
-        <td>01:18:20</td>
-        <td style="text-align: right; color: var(--accent);">510K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('2aRLVtiLkiU', 'The Future of the Earth')" style="cursor:pointer;">
-        <td>▶ THE FUTURE OF THE EARTH</td>
-        <td>01:20:10</td>
-        <td style="text-align: right; color: var(--accent);">408K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('Uq_3nJ9b_Sg', 'The History of the Earth')" style="cursor:pointer;">
-        <td>▶ THE HISTORY OF THE EARTH</td>
-        <td>01:28:45</td>
-        <td style="text-align: right; color: var(--accent);">342K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Dawn of Life (Cambrian)')" style="cursor:pointer;">
-        <td>▶ THE DAWN OF LIFE (CAMBRIAN)</td>
-        <td>01:05:40</td>
-        <td style="text-align: right; color: var(--accent);">95K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Great Ordovician')" style="cursor:pointer;">
-        <td>▶ THE GREAT ORDOVICIAN</td>
-        <td>01:08:15</td>
-        <td style="text-align: right; color: var(--accent);">88K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Epic of the Silurian')" style="cursor:pointer;">
-        <td>▶ THE EPIC OF THE SILURIAN</td>
-        <td>01:10:25</td>
-        <td style="text-align: right; color: var(--accent);">82K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Evolution of Snakes')" style="cursor:pointer;">
-        <td>▶ THE EVOLUTION OF SNAKES</td>
-        <td>01:14:15</td>
-        <td style="text-align: right; right; color: var(--accent);">65K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'The Colonization of Land')" style="cursor:pointer;">
-        <td>▶ THE COLONIZATION OF LAND</td>
-        <td>01:19:55</td>
-        <td style="text-align: right; color: var(--accent);">58K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'The Earth: 4Ga, 3Ga and 500Ma')" style="cursor:pointer;">
-        <td>▶ THE EARTH: 4GA, 3GA AND 500MA</td>
-        <td>01:21:05</td>
-        <td style="text-align: right; color: var(--accent);">53K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('nmiREm8s5Dg', 'Appearance of Life / Ediacaran')" style="cursor:pointer;">
-        <td>▶ APPEARANCE OF LIFE / EDIACARAN</td>
-        <td>01:13:40</td>
-        <td style="text-align: right; color: var(--accent);">53K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'The Devonian: Age of Fish')" style="cursor:pointer;">
-        <td>▶ THE DEVONIAN: AGE OF FISH</td>
-        <td>01:07:55</td>
-        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'The First Animals and Predators')" style="cursor:pointer;">
-        <td>▶ THE FIRST ANIMALS AND PREDATORS</td>
-        <td>01:09:50</td>
-        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('XMKnDFY417E', 'The Great Ice Ages')" style="cursor:pointer;">
-        <td>▶ THE GREAT ICE AGES</td>
-        <td>01:11:30</td>
-        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('52_hwqIJRs8', 'Leaving the Water')" style="cursor:pointer;">
-        <td>▶ LEAVING THE WATER</td>
-        <td>01:14:20</td>
-        <td style="text-align: right; color: var(--accent);">8K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Earth After the Dinosaurs')" style="cursor:pointer;">
-        <td>▶ EARTH AFTER THE DINOSAURS</td>
-        <td>01:16:10</td>
-        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Zelandia / Super Volcanoes')" style="cursor:pointer;">
-        <td>▶ ZELANDIA / SUPER VOLCANOES</td>
-        <td>01:12:40</td>
-        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('uyE2ZlO-miM', 'Titanoboa: The Giant Snake')" style="cursor:pointer;">
-        <td>▶ TITANOBOA: THE GIANT SNAKE</td>
-        <td>01:04:20</td>
-        <td style="text-align: right; color: var(--accent);">4.7K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Permian Extinction')" style="cursor:pointer;">
-        <td>▶ THE PERMIAN EXTINCTION</td>
-        <td>01:15:45</td>
-        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Triassic: Awakening of Earth')" style="cursor:pointer;">
-        <td>▶ THE TRIASSIC: AWAKENING OF EARTH</td>
-        <td>01:12:30</td>
-        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'The Breaking of Pangea')" style="cursor:pointer;">
-        <td>▶ THE BREAKING OF PANGEA</td>
-        <td>01:09:15</td>
-        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('JI860fjLp9A', 'Panthalassa: The Unique Ocean')" style="cursor:pointer;">
-        <td>▶ PANTHALASSA: THE UNIQUE OCEAN</td>
-        <td>01:05:50</td>
-        <td style="text-align: right; color: var(--accent);">2K VIEWS</td>
-    </tr>
-</tbody>  
-                                </tbody>
+						
+<tbody id="earth-life-table-body">
+<tr onclick="openNarrativePlayer('EPYstHyYNSA', 'The Forgotten Era: What Really Happened AFTER the Dinosaurs Went Extinct ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/EPYstHyYNSA/hqdefault.jpg" class="log-thumb">▶ THE FORGOTTEN ERA: WHAT REALLY HAPPENED AFTER THE DINOSAURS WENT EXTINCT ?</td>
+    <td>01:20:34</td>
+    <td class="log-views">3.1M VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('L3NBOm9KkHQ', 'What was the Earth like at the time of Pangea?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/L3NBOm9KkHQ/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE AT THE TIME OF PANGEA?</td>
+    <td>01:12:28</td>
+    <td class="log-views">3.8M VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('uVH5Tvg3sG0', 'What REALLY happened AFTER the Dinosaurs became Extinct?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/uVH5Tvg3sG0/hqdefault.jpg" class="log-thumb">▶ WHAT REALLY HAPPENED AFTER THE DINOSAURS BECAME EXTINCT?</td>
+    <td>01:20:34</td>
+    <td class="log-views">2.8M VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('dOwVo1D4vi8', 'The Complete History of the Earth: A MAGNIFICENT Journey into PREHISTORY')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/dOwVo1D4vi8/hqdefault.jpg" class="log-thumb">▶ THE COMPLETE HISTORY OF THE EARTH: A MAGNIFICENT JOURNEY INTO PREHISTORY</td>
+    <td>01:28:32</td>
+    <td class="log-views">930K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('7A6v-fwlpF8', 'What was the Earth like 500 million years ago ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/7A6v-fwlpF8/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE 500 MILLION YEARS AGO ?</td>
+    <td>01:13:54</td>
+    <td class="log-views">868K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('1Ke8c3gHV04', 'PREHISTORIC SECRETS: What was the Earth REALLY like BEFORE the Dinosaurs?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/1Ke8c3gHV04/hqdefault.jpg" class="log-thumb">▶ PREHISTORIC SECRETS: WHAT WAS THE EARTH REALLY LIKE BEFORE THE DINOSAURS?</td>
+    <td>01:33:52</td>
+    <td class="log-views">793K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('AHm3BO4yE5o', 'WHAT SECRETS ARE REALLY HIDING THERE? An INCREDIBLE JOURNEY to the CENTER of the EARTH')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/AHm3BO4yE5o/hqdefault.jpg" class="log-thumb">▶ WHAT SECRETS ARE REALLY HIDING THERE? AN INCREDIBLE JOURNEY TO THE CENTER OF THE EARTH</td>
+    <td>01:30:16</td>
+    <td class="log-views">699K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('OR3US_gBa5k', 'What did the Earth REALLY look like in the Jurassic Period?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/OR3US_gBa5k/hqdefault.jpg" class="log-thumb">▶ WHAT DID THE EARTH REALLY LOOK LIKE IN THE JURASSIC PERIOD?</td>
+    <td>01:30:50</td>
+    <td class="log-views">685K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('ZkOPahZM3qI', 'What was the Earth like during the 5 Mass Extinctions ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/ZkOPahZM3qI/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE DURING THE 5 MASS EXTINCTIONS ?</td>
+    <td>01:08:28</td>
+    <td class="log-views">651K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('n9fu1eMTsMk', 'WHY was the Earth AFTER the DINOSAURS TERRIFYING? The Amazing Secrets of Giant Snakes')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/n9fu1eMTsMk/hqdefault.jpg" class="log-thumb">▶ WHY WAS THE EARTH AFTER THE DINOSAURS TERRIFYING? THE AMAZING SECRETS OF GIANT SNAKES</td>
+    <td>01:27:04</td>
+    <td class="log-views">630K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('chkNFasmErM', 'Silurian: The era when life left the oceans to conquer the land!')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/chkNFasmErM/hqdefault.jpg" class="log-thumb">▶ SILURIAN: THE ERA WHEN LIFE LEFT THE OCEANS TO CONQUER THE LAND!</td>
+    <td>01:35:35</td>
+    <td class="log-views">580K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('FNtO_1d4j0w', 'The Secrets of the Origin of Life: How did it all Begin ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/FNtO_1d4j0w/hqdefault.jpg" class="log-thumb">▶ THE SECRETS OF THE ORIGIN OF LIFE: HOW DID IT ALL BEGIN ?</td>
+    <td>01:52:54</td>
+    <td class="log-views">457K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('ifNTcwG-NB8', 'What Does the Mysterious Missing Continent Zealandia Look Like ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/ifNTcwG-NB8/hqdefault.jpg" class="log-thumb">▶ WHAT DOES THE MYSTERIOUS MISSING CONTINENT ZEALANDIA LOOK LIKE ?</td>
+    <td>01:11:46</td>
+    <td class="log-views">456K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('O-YpX5Yav5w', 'Devonian: The Little-Known Era When Armored Prehistoric Sharks Dominated the Seas!')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/O-YpX5Yav5w/hqdefault.jpg" class="log-thumb">▶ DEVONIAN: THE LITTLE-KNOWN ERA WHEN ARMORED PREHISTORIC SHARKS DOMINATED THE SEAS!</td>
+    <td>01:52:27</td>
+    <td class="log-views">426K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('-b4JUjANmwc', 'What was the Earth like in the Age of Giant Prehistoric Creatures?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/-b4JUjANmwc/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE IN THE AGE OF GIANT PREHISTORIC CREATURES?</td>
+    <td>01:07:47</td>
+    <td class="log-views">409K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('Wbxa8xe2c4k', 'What REALLY Happened in the Cretaceous BEFORE the Extinction of the Dinosaurs?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/Wbxa8xe2c4k/hqdefault.jpg" class="log-thumb">▶ WHAT REALLY HAPPENED IN THE CRETACEOUS BEFORE THE EXTINCTION OF THE DINOSAURS?</td>
+    <td>01:29:05</td>
+    <td class="log-views">401K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('6HG-rCPTYXg', 'The Origin of the Dinosaurs: How the History of the Dinosaurs REALLY Happened')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/6HG-rCPTYXg/hqdefault.jpg" class="log-thumb">▶ THE ORIGIN OF THE DINOSAURS: HOW THE HISTORY OF THE DINOSAURS REALLY HAPPENED</td>
+    <td>01:29:34</td>
+    <td class="log-views">282K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('jQHxtDFauaI', 'What REALLY Happened on Earth in the Age of ANCIENT Supercontinents?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/jQHxtDFauaI/hqdefault.jpg" class="log-thumb">▶ WHAT REALLY HAPPENED ON EARTH IN THE AGE OF ANCIENT SUPERCONTINENTS?</td>
+    <td>01:25:42</td>
+    <td class="log-views">261K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('9-_0LxrqzBU', 'What was the Earth like 3 Billion Years Ago ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/9-_0LxrqzBU/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE 3 BILLION YEARS AGO ?</td>
+    <td>01:10:20</td>
+    <td class="log-views">248K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('4NF2WJmZ2G4', 'What is the MOST BIGGEST Volcano Eruption in the WORLD ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/4NF2WJmZ2G4/hqdefault.jpg" class="log-thumb">▶ WHAT IS THE MOST BIGGEST VOLCANO ERUPTION IN THE WORLD ?</td>
+    <td>01:27:00</td>
+    <td class="log-views">238K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('-hxgGI5aJyg', 'What Really Happened BEFORE the Dinosaurs? The AGE of Prehistoric GIANT Plants')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/-hxgGI5aJyg/hqdefault.jpg" class="log-thumb">▶ WHAT REALLY HAPPENED BEFORE THE DINOSAURS? THE AGE OF PREHISTORIC GIANT PLANTS</td>
+    <td>01:23:19</td>
+    <td class="log-views">207K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('STKHgaZSo3o', 'BEFORE the Dinosaurs: WHY did ANIMALS LEAVE the Ocean to CONQUER the Earth?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/STKHgaZSo3o/hqdefault.jpg" class="log-thumb">▶ BEFORE THE DINOSAURS: WHY DID ANIMALS LEAVE THE OCEAN TO CONQUER THE EARTH?</td>
+    <td>01:12:14</td>
+    <td class="log-views">200K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('MYJBhjzq6EE', 'The Secrets of the Panthalassa: How Did This Mysterious Prehistoric Mega-Ocean Change Our Planet ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/MYJBhjzq6EE/hqdefault.jpg" class="log-thumb">▶ THE SECRETS OF THE PANTHALASSA: HOW DID THIS MYSTERIOUS PREHISTORIC MEGA-OCEAN CHANGE OUR PLANET ?</td>
+    <td>01:31:08</td>
+    <td class="log-views">200K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('QAwjid7239U', 'Secrets of Early Life: How the Cambrian REALLY Changed the World')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/QAwjid7239U/hqdefault.jpg" class="log-thumb">▶ SECRETS OF EARLY LIFE: HOW THE CAMBRIAN REALLY CHANGED THE WORLD</td>
+    <td>01:23:08</td>
+    <td class="log-views">166K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('k6XVRWJ5GM4', 'Prehistoric Superpredators: How did these forgotten creatures turn Earth\'s history upside down ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/k6XVRWJ5GM4/hqdefault.jpg" class="log-thumb">▶ PREHISTORIC SUPERPREDATORS: HOW DID THESE FORGOTTEN CREATURES TURN EARTH'S HISTORY UPSIDE DOWN ?</td>
+    <td>01:19:22</td>
+    <td class="log-views">156K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('9m20-PjnBow', 'The Forgotten Era: What REALLY Happened When the Dinosaurs Appeared?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/9m20-PjnBow/hqdefault.jpg" class="log-thumb">▶ THE FORGOTTEN ERA: WHAT REALLY HAPPENED WHEN THE DINOSAURS APPEARED?</td>
+    <td>01:20:14</td>
+    <td class="log-views">134K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('4gzFEd8_5As', 'What was the Earth like 4 Billion Years Ago ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/4gzFEd8_5As/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE 4 BILLION YEARS AGO ?</td>
+    <td>01:14:24</td>
+    <td class="log-views">118K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('el5XNzIhSSE', 'WHY was the Earth BEFORE the DINOSAURS TERRIFYING? The Most Amazing Prehistoric Secrets')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/el5XNzIhSSE/hqdefault.jpg" class="log-thumb">▶ WHY WAS THE EARTH BEFORE THE DINOSAURS TERRIFYING? THE MOST AMAZING PREHISTORIC SECRETS</td>
+    <td>01:29:40</td>
+    <td class="log-views">102K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('5D9tpaKmva0', 'Before the Dinosaurs: The Mysteries of the Lost Age of Ediacaran Creatures')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/5D9tpaKmva0/hqdefault.jpg" class="log-thumb">▶ BEFORE THE DINOSAURS: THE MYSTERIES OF THE LOST AGE OF EDIACARAN CREATURES</td>
+    <td>01:22:48</td>
+    <td class="log-views">102K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('lg1t5RRul9g', 'What was the Earth like in the Age of GIANT INSECTS ? The Most Amazing Prehistoric Secrets')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/lg1t5RRul9g/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE IN THE AGE OF GIANT INSECTS ? THE MOST AMAZING PREHISTORIC SECRETS</td>
+    <td>01:26:41</td>
+    <td class="log-views">90K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('rA6CH0Elmso', 'The Ages of Planetary Glaciations: THE INCREDIBLE Moment when the Earth was a snowball!')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/rA6CH0Elmso/hqdefault.jpg" class="log-thumb">▶ THE AGES OF PLANETARY GLACIATIONS: THE INCREDIBLE MOMENT WHEN THE EARTH WAS A SNOWBALL!</td>
+    <td>01:21:06</td>
+    <td class="log-views">78K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('Qr0IKsfemVU', 'What was the Earth like in the Age of the First Animals ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/Qr0IKsfemVU/hqdefault.jpg" class="log-thumb">▶ WHAT WAS THE EARTH LIKE IN THE AGE OF THE FIRST ANIMALS ?</td>
+    <td>01:16:53</td>
+    <td class="log-views">70K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('wVob2afLDLI', 'The Enigma of an Uncertain Future: How will Earth\'s History REALLY end ?')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/wVob2afLDLI/hqdefault.jpg" class="log-thumb">▶ THE ENIGMA OF AN UNCERTAIN FUTURE: HOW WILL EARTH'S HISTORY REALLY END ?</td>
+    <td>01:28:42</td>
+    <td class="log-views">31K VIEWS</td>
+</tr>
+</tbody>
                         </table>
                     </div>
 
@@ -761,63 +935,64 @@
                             <span style="font-size: 9px; color: var(--accent);">FULL LIST [ACTIVE]</span>
                         </button>
                         <table class="archive-table" id="space-table">
-                           <tbody id="space-table-body">
-    <tr onclick="openNarrativePlayer('fXvI_YInC6k', 'James Webb: The First Revelations')" style="cursor:pointer;">
-        <td>▶ JAMES WEBB: THE FIRST REVELATIONS</td>
-        <td>01:21:40</td>
-        <td style="text-align: right; color: var(--accent);">824K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('1_cWv_8dNr4', 'Journey to the Heart of Black Holes')" style="cursor:pointer;">
-        <td>▶ JOURNEY TO THE HEART OF BLACK HOLES</td>
-        <td>01:18:50</td>
-        <td style="text-align: right; color: var(--accent);">756K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'Voyages to the Stars')" style="cursor:pointer;">
-        <td>▶ VOYAGES TO THE STARS</td>
-        <td>01:27:38</td>
-        <td style="text-align: right; color: var(--accent);">250K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'Fabulous Journey to the Heart of the Universe')" style="cursor:pointer;">
-        <td>▶ FABULOUS JOURNEY TO THE HEART OF THE UNIVERSE</td>
-        <td>01:14:30</td>
-        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('YAJPvdtxXRY', 'The Observable Universe')" style="cursor:pointer;">
-        <td>▶ THE OBSERVABLE UNIVERSE</td>
-        <td>01:15:10</td>
-        <td style="text-align: right; color: var(--accent);">117K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('48iMJOgeL3Y', 'The Worlds of Exoplanets')" style="cursor:pointer;">
-        <td>▶ THE WORLDS OF EXOPLANETS</td>
-        <td>01:12:20</td>
-        <td style="text-align: right; color: var(--accent);">110K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('H8B_8_pD8-k', 'Mars: The Search for Water and Life')" style="cursor:pointer;">
-        <td>▶ MARS: THE SEARCH FOR WATER AND LIFE</td>
-        <td>01:16:30</td>
-        <td style="text-align: right; color: var(--accent);">78K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('Gv8_6f6z0Yk', 'The History of the Moon')" style="cursor:pointer;">
-        <td>▶ THE HISTORY OF THE MOON</td>
-        <td>01:22:50</td>
-        <td style="text-align: right; color: var(--accent);">72K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('48iMJOgeL3Y', 'Trappist-1 System')" style="cursor:pointer;">
-        <td>▶ TRAPPIST-1 SYSTEM</td>
-        <td>01:12:20</td>
-        <td style="text-align: right; color: var(--accent);">10K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('A-Fg1pD_kGo', 'The Conditions that Triggered the Big Bang')" style="cursor:pointer;">
-        <td>▶ THE CONDITIONS THAT TRIGGERED THE BIG BANG</td>
-        <td>01:23:45</td>
-        <td style="text-align: right; color: var(--accent);">1.3K VIEWS</td>
-    </tr>
-    <tr onclick="openNarrativePlayer('aXsWymhbry0', 'What Triggered the Big Bang?')" style="cursor:pointer;">
-        <td>▶ WHAT TRIGGERED THE BIG BANG?</td>
-        <td>01:19:12</td>
-        <td style="text-align: right; color: var(--accent);">922 VIEWS</td>
-    </tr>
-</tbody> 
+                         <tbody id="space-table-body">
+  <tr onclick="openNarrativePlayer('7FgXJlsXQlY', 'An INCREDIBLE Journey the Most Beautiful Discoveries of the Universe by JAMES WEBB')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/7FgXJlsXQlY/hqdefault.jpg" class="log-thumb">▶ AN INCREDIBLE JOURNEY THE MOST BEAUTIFUL DISCOVERIES OF THE UNIVERSE BY JAMES WEBB</td>
+    <td>01:10:47</td>
+    <td class="log-views">1.4M VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('Lmal1rEwS-8', 'Journey to the Monsters of the Cosmos Go to the DISCOVERY of Mysterious Black Hole')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/Lmal1rEwS-8/hqdefault.jpg" class="log-thumb">▶ JOURNEY TO THE MONSTERS OF THE COSMOS GO TO THE DISCOVERY OF MYSTERIOUS BLACK HOLE</td>
+    <td>01:15:53</td>
+    <td class="log-views">496K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('pY6vnbiqpAQ', 'The Mysterious Birth of the Universe: Journey to the Dawn of the Night of Time')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/pY6vnbiqpAQ/hqdefault.jpg" class="log-thumb">▶ THE MYSTERIOUS BIRTH OF THE UNIVERSE: JOURNEY TO THE DAWN OF THE NIGHT OF TIME</td>
+    <td>01:16:07</td>
+    <td class="log-views">448K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('lc-4_IDtqzE', 'A Mysterious Celestial Object: Journey to the Strange Planet X of the Solar System')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/lc-4_IDtqzE/hqdefault.jpg" class="log-thumb">▶ A MYSTERIOUS CELESTIAL OBJECT: JOURNEY TO THE STRANGE PLANET X OF THE SOLAR SYSTEM</td>
+    <td>01:07:08</td>
+    <td class="log-views">386K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('dtO7oJa8jZo', 'The Incredible Evolution of the Universe: Journey to the End of Time')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/dtO7oJa8jZo/hqdefault.jpg" class="log-thumb">▶ THE INCREDIBLE EVOLUTION OF THE UNIVERSE: JOURNEY TO THE END OF TIME</td>
+    <td>01:22:07</td>
+    <td class="log-views">302K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('cOw-I7DK2n0', 'DISCOVERING a STRANGE ALIEN Stellar System with 6 habitable Planets')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/cOw-I7DK2n0/hqdefault.jpg" class="log-thumb">▶ DISCOVERING A STRANGE ALIEN STELLAR SYSTEM WITH 6 HABITABLE PLANETS</td>
+    <td>01:16:55</td>
+    <td class="log-views">301K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('xQJXbpF3L_s', 'Towards Mysterious Horizons : An Epic Journey to the Heart of the Universe')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/xQJXbpF3L_s/hqdefault.jpg" class="log-thumb">▶ TOWARDS MYSTERIOUS HORIZONS : AN EPIC JOURNEY TO THE HEART OF THE UNIVERSE</td>
+    <td>01:13:05</td>
+    <td class="log-views">285K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('1VpFHEkOHN8', 'DISCOVER the Strangest Extraterrestrial Stellar Objects in the Universe')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/1VpFHEkOHN8/hqdefault.jpg" class="log-thumb">▶ DISCOVER THE STRANGEST EXTRATERRESTRIAL STELLAR OBJECTS IN THE UNIVERSE</td>
+    <td>01:12:05</td>
+    <td class="log-views">150K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('TdmSdZWYQtU', 'DISCOVERING the most SUITABLE Alien Planet for Extraterrestrial Life')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/TdmSdZWYQtU/hqdefault.jpg" class="log-thumb">▶ DISCOVERING THE MOST SUITABLE ALIEN PLANET FOR EXTRATERRESTRIAL LIFE</td>
+    <td>01:12:47</td>
+    <td class="log-views">109K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('3-4yt31quP8', 'Beyond the Imaginable: The Craziest Discoveries of the Observable Universe!')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/3-4yt31quP8/hqdefault.jpg" class="log-thumb">▶ BEYOND THE IMAGINABLE: THE CRAZIEST DISCOVERIES OF THE OBSERVABLE UNIVERSE!</td>
+    <td>01:12:26</td>
+    <td class="log-views">71K VIEWS</td>
+</tr>
+<tr onclick="openNarrativePlayer('SNAmniACxb8', 'Secret Universes: An Unprecedented Journey into Neighboring Solar Systems')">
+    <td class="thumb-container"><img src="https://img.youtube.com/vi/SNAmniACxb8/hqdefault.jpg" class="log-thumb">▶ SECRET UNIVERSES: AN UNPRECEDENTED JOURNEY INTO NEIGHBORING SOLAR SYSTEMS</td>
+    <td>01:22:37</td>
+    <td class="log-views">28K VIEWS</td>
+
+</tr>
+</tbody>
                         </table>
                     </div>
                 </div>
@@ -878,117 +1053,272 @@
         </footer>
     </div>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
-
+     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
         let vPlayer;
         let isPlaying = true;
         let isMuted = false;
 
-        function initExperience() {
+        // ✅ FONCTION PRINCIPALE - Appelée par le bouton "Watch Preview"
+        window.initExperience = function() {
             const splash = document.getElementById('splash-screen');
             const main = document.getElementById('main-content');
-            const videoSection = document.getElementById('video-section');
+            
+            console.log("initExperience appelée");
+            
+            // Animation de sortie du splash screen
             splash.style.opacity = '0';
-            setTimeout(() => {
+            
+            setTimeout(function() {
                 splash.style.display = 'none';
                 main.style.display = 'block';
-                videoSection.scrollIntoView();
-                setTimeout(() => {
+                document.body.classList.add('is-active');
+                
+                // Afficher le contenu avec fondu
+                setTimeout(function() {
                     main.style.opacity = '1';
-                    document.body.classList.add('is-active');
-                    vPlayer = new Vimeo.Player(document.getElementById('hero-vimeo'));
-                    vPlayer.ready().then(() => {
+                }, 50);
+                
+                // Initialiser le player Vimeo
+                var iframe = document.getElementById('hero-vimeo');
+                if (iframe) {
+                    vPlayer = new Vimeo.Player(iframe);
+                    vPlayer.ready().then(function() {
                         vPlayer.setMuted(false);
                         vPlayer.setVolume(0.7);
-                        vPlayer.play();
+                        vPlayer.play().catch(function(e) {
+                            console.log("Autoplay bloqué :", e);
+                        });
                     });
-                    initStatsCounter();
-                }, 100);
+                }
+                
+                // Lancer les compteurs de stats
+                initStatsCounter();
+                
+                // Scroll vers la section vidéo
+                var videoSection = document.getElementById('video-section');
+                if (videoSection) {
+                    videoSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }, 800);
-        }
+        };
 
         // --- ARCHIVE ENGINE ---
-        function toggleMasterArchive() {
-            const archive = document.getElementById('master-archive');
-            const btn = document.getElementById('archive-toggle-btn');
+        window.toggleMasterArchive = function() {
+            var archive = document.getElementById('master-archive');
+            var btn = document.getElementById('archive-toggle-btn');
+            
+            if (!archive || !btn) return;
+            
             archive.classList.toggle('open');
-            if(archive.classList.contains('open')) {
+            
+            if (archive.classList.contains('open')) {
                 btn.textContent = "Close Archives [-]";
-                setTimeout(() => archive.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+                setTimeout(function() {
+                    archive.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
             } else {
                 btn.textContent = "Explore 2024 Production Log [48 Projects] [+]";
             }
-        }
+        };
 
-        function toggleTable(id) {
-            const table = document.getElementById(id);
-            const isVisible = table.classList.contains('active');
-            document.querySelectorAll('.archive-table').forEach(t => t.classList.remove('active'));
-            if(!isVisible) table.classList.add('active');
-        }
-
-        function openNarrativePlayer(id, title) {
-            const w = 1280;
-            const h = 720;
-            const left = (window.screen.width / 2) - (w / 2);
-            const top = (window.screen.height / 2) - (h / 2);
-            const url = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&enablejsapi=1&playlist=${id}`;
-            const playerWin = window.open('', 'EP_PORTFOLIO_PLAYER', `width=${w},height=${h},top=${top},left=${left},status=no,resizable=yes`);
-            if (playerWin) {
-                playerWin.document.write(`
-                    <html><body style="margin:0; background:#000; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                        <iframe src="${url}" style="width:100vw; height:100vh; border:none;" allow="autoplay; fullscreen"></iframe>
-                        <div style="position:fixed; top:15px; right:20px;"><button onclick="window.close()" style="background:rgba(212,175,55,0.2); border:1px solid #d4af37; color:#d4af37; cursor:pointer; padding:8px 15px; font-size:10px; text-transform:uppercase; font-weight:700;">Close</button></div>
-                    </body></html>`);
+        window.toggleTable = function(id) {
+            var table = document.getElementById(id);
+            if (!table) return;
+            
+            var isVisible = table.classList.contains('active');
+            
+            // Fermer toutes les autres tables
+            document.querySelectorAll('.archive-table').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            
+            // Ouvrir celle demandée si elle n'était pas visible
+            if (!isVisible) {
+                table.classList.add('active');
             }
-        }
+        };
 
-        function togglePlay() {
-            const p = document.getElementById('play-svg');
-            const pa = document.getElementById('pause-svg');
-            if (isPlaying) { vPlayer.pause(); p.style.display = 'block'; pa.style.display = 'none'; }
-            else { vPlayer.play(); p.style.display = 'none'; pa.style.display = 'block'; }
+        window.openNarrativePlayer = function(id, title) {
+            var w = 1280;
+            var h = 720;
+            var left = (window.screen.width / 2) - (w / 2);
+            var top = (window.screen.height / 2) - (h / 2);
+            var url = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&mute=1&rel=0&modestbranding=1&enablejsapi=1';
+            
+            var playerWin = window.open('', 'EP_PORTFOLIO_PLAYER', 'width=' + w + ',height=' + h + ',top=' + top + ',left=' + left + ',status=no,resizable=yes');
+            
+            if (playerWin) {
+                playerWin.document.write('<!DOCTYPE html><html><head><title>' + title + ' | Emeric Perilhou</title><style>body{margin:0;background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}iframe{width:100vw;height:100vh;border:none}.close-btn{position:fixed;top:15px;right:20px;z-index:9999;background:rgba(0,0,0,0.7);border:1px solid #d4af37;color:#d4af37;cursor:pointer;padding:10px 20px;font-size:11px;text-transform:uppercase;font-weight:700;border-radius:4px}.close-btn:hover{background:#d4af37;color:#000}</style></head><body><button class="close-btn" onclick="window.close()">✕ Close</button><iframe src="' + url + '" allow="autoplay; fullscreen"></iframe></body></html>');
+                playerWin.document.close();
+            }
+        };
+
+        window.togglePlay = function() {
+            if (!vPlayer) return;
+            
+            var playSvg = document.getElementById('play-svg');
+            var pauseSvg = document.getElementById('pause-svg');
+            
+            if (isPlaying) {
+                vPlayer.pause();
+                if (playSvg) playSvg.style.display = 'block';
+                if (pauseSvg) pauseSvg.style.display = 'none';
+            } else {
+                vPlayer.play();
+                if (playSvg) playSvg.style.display = 'none';
+                if (pauseSvg) pauseSvg.style.display = 'block';
+            }
             isPlaying = !isPlaying;
-        }
+        };
 
-        function toggleMute() {
-            const on = document.getElementById('vol-on-svg');
-            const off = document.getElementById('vol-off-svg');
-            if (isMuted) { vPlayer.setMuted(false); on.style.display = 'block'; off.style.display = 'none'; }
-            else { vPlayer.setMuted(true); on.style.display = 'none'; off.style.display = 'block'; }
+        window.toggleMute = function() {
+            if (!vPlayer) return;
+            
+            var volOn = document.getElementById('vol-on-svg');
+            var volOff = document.getElementById('vol-off-svg');
+            
+            if (isMuted) {
+                vPlayer.setMuted(false);
+                if (volOn) volOn.style.display = 'block';
+                if (volOff) volOff.style.display = 'none';
+            } else {
+                vPlayer.setMuted(true);
+                if (volOn) volOn.style.display = 'none';
+                if (volOff) volOff.style.display = 'block';
+            }
             isMuted = !isMuted;
-        }
+        };
 
         function initStatsCounter() {
-            const stats = document.querySelectorAll('.stat-number');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+            var stats = document.querySelectorAll('.stat-number');
+            
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
-                        animateCounter(entry.target, parseInt(entry.target.getAttribute('data-target')));
-                        observer.unobserve(entry.target);
+                        var target = entry.target;
+                        var endValue = parseInt(target.getAttribute('data-target'));
+                        animateCounter(target, endValue);
+                        observer.unobserve(target);
                     }
                 });
             }, { threshold: 0.5 });
-            stats.forEach(stat => observer.observe(stat));
+            
+            stats.forEach(function(stat) {
+                observer.observe(stat);
+            });
         }
 
         function animateCounter(element, endValue) {
-            let startTime = performance.now();
+            var startTime = performance.now();
+            var duration = 2000;
+            
             function update(currentTime) {
-                let progress = Math.min((currentTime - startTime) / 2000, 1);
-                let val = Math.floor((1 - Math.pow(1 - progress, 3)) * endValue);
+                var elapsed = currentTime - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+                var easeOut = 1 - Math.pow(1 - progress, 3);
+                var val = Math.floor(easeOut * endValue);
+                
                 if (endValue === 7) {
-                    element.textContent = `${val}x${val}`;
+                    element.textContent = val + 'x' + val;
                 } else if (endValue === 100) {
-                    element.textContent = `${val}M+`;
+                    element.textContent = val + 'M+';
                 } else {
-                    element.textContent = `${val}`;
+                    element.textContent = val;
                 }
-                if (progress < 1) requestAnimationFrame(update);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    if (endValue === 7) {
+                        element.textContent = '7x7';
+                    } else if (endValue === 100) {
+                        element.textContent = '100M+';
+                    } else {
+                        element.textContent = endValue;
+                    }
+                }
             }
+            
             requestAnimationFrame(update);
         }
+
+        // 🔥 SOLUTION JAVASCRIPT PURE POUR LE ZOOM DES VIGNETTES 🔥
+        function initThumbnailZoom() {
+            // Sélectionner toutes les lignes des tableaux de logs
+            var allRows = document.querySelectorAll('.archive-table tbody tr, .log-table tbody tr');
+            
+            allRows.forEach(function(row) {
+                // Trouver l'image dans cette ligne
+                var img = row.querySelector('img');
+                if (!img) return;
+                
+                // Sauvegarder les styles originaux
+                var originalTransform = img.style.transform || '';
+                var originalBorderColor = img.style.borderColor || '';
+                var originalBoxShadow = img.style.boxShadow || '';
+                var originalTransition = img.style.transition || '';
+                var originalZIndex = img.style.zIndex || '';
+                var originalPosition = img.style.position || '';
+                
+                // Appliquer une transition fluide
+                img.style.transition = 'transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out';
+                
+                // Événement au survol de la ligne
+                row.addEventListener('mouseenter', function() {
+                    img.style.transform = 'scale(1.15)';
+                    img.style.borderColor = '#d4af37';
+                    img.style.boxShadow = '0 12px 25px rgba(212, 175, 55, 0.3)';
+                    img.style.zIndex = '999';
+                    img.style.position = 'relative';
+                });
+                
+                // Événement à la sortie du survol
+                row.addEventListener('mouseleave', function() {
+                    img.style.transform = originalTransform;
+                    img.style.borderColor = originalBorderColor;
+                    img.style.boxShadow = originalBoxShadow;
+                    img.style.zIndex = originalZIndex;
+                    img.style.position = originalPosition;
+                });
+            });
+            
+            console.log('✅ Zoom des vignettes initialisé sur ' + allRows.length + ' lignes');
+        }
+
+        // Initialisation au chargement
+        window.addEventListener('load', function() {
+            var splash = document.getElementById('splash-screen');
+            var main = document.getElementById('main-content');
+            
+            if (splash) splash.style.opacity = '1';
+            if (main) {
+                main.style.display = 'none';
+                main.style.opacity = '0';
+            }
+            
+            // Initialiser le zoom après un court délai (pour être sûr que le DOM est prêt)
+            setTimeout(initThumbnailZoom, 500);
+            
+            console.log('Page chargée, fonction initExperience disponible :', typeof window.initExperience === 'function');
+        });
+        
+        // Réinitialiser le zoom si les tableaux sont affichés dynamiquement
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    var target = mutation.target;
+                    if (target.classList.contains('active') || target.classList.contains('open')) {
+                        setTimeout(initThumbnailZoom, 100);
+                    }
+                }
+            });
+        });
+        
+        // Observer les changements de classe sur les tableaux et archives
+        document.querySelectorAll('.archive-table, #master-archive').forEach(function(el) {
+            observer.observe(el, { attributes: true });
+        });
     </script>
 </body>
 </html>
