@@ -578,6 +578,95 @@
         width: 25%;
         font-size: 0.7rem;
     }
+	
+	/* Highlight styles for first two positions */
+.timeline-item.highlight .tm-content h3 {
+    font-size: 1.3rem;
+    color: var(--accent);
+}
+
+.tm-desc-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.tm-desc-list li {
+    color: #aaa;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.tm-desc-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Compact timeline item */
+.timeline-item.compact {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #1a1a1a;
+}
+
+.timeline-item.compact .tm-date {
+    font-size: 10px;
+    color: #555;
+}
+
+.compact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.compact-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px dashed #1a1a1a;
+    padding-bottom: 6px;
+}
+
+.compact-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ccc;
+}
+
+.compact-company {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.compact-note {
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .compact-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .compact-note {
+        text-align: left;
+    }
+}
 </style>
 </head>
 <body>
@@ -1017,26 +1106,63 @@
             </div>
         </section>
 
-        <section id="career">
-            <h2 class="section-title">PROFESSIONAL JOURNEY</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tm-date">PRESENT</div>
-                    <div class="tm-content">
-                        <h3>Lead Narrative Editor & Archive Lead</h3>
-                        <span>Orbinea Studios / Wondody</span>
-                        <p>Managing post-production for high-retention documentaries (80-90 min).</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="tm-date">PAST</div>
-                    <div class="tm-content">
-                        <h3>Post-Production Director & VFX</h3>
-                        <span>Freelance / Art Collectives</span>
-                        <p>Specialized in visual enhancement and cinematic editing across Europe and the Middle East.</p>
-                    </div>
-                </div>
+      <section id="career">
+    <h2 class="section-title">PROFESSIONAL JOURNEY</h2>
+    <div class="timeline">
+        
+        <!-- POSTE 1 - HIGHLIGHT -->
+        <div class="timeline-item highlight">
+            <div class="tm-date">2025 – PRESENT</div>
+            <div class="tm-content">
+                <h3>Lead Editor & Sound Designer</h3>
+                <span>DCK Studio – Collaboration with Lukas Zipira</span>
+                <ul class="tm-desc-list">
+                    <li>Performance Film Editing: Lead editor for immersive cinematic projects. Reconstructed symbolic narratives through complex multicam workflows (e.g., short film "23h23").</li>
+                    <li>Artistic Post-Production: Developed bespoke visual aesthetics and handcrafted transitions for high-end video-essays.</li>
+                    <li>Immersive Scenography: Edited thematic film-essays designed for large-scale video projections.</li>
+                </ul>
             </div>
+        </div>
+
+        <!-- POSTE 2 - HIGHLIGHT -->
+        <div class="timeline-item highlight">
+            <div class="tm-date">2023 – 2025</div>
+            <div class="tm-content">
+                <h3>Founder & Lead Video Editor</h3>
+                <span>DCK Production | Client: Orbinea (Webedia Network)</span>
+                <ul class="tm-desc-list">
+                    <li>Mastery of Audience Retention: Directed narrative assembly for 60+ documentaries (100M+ views).</li>
+                    <li>World-Building: Reconstructed 90-min visual narratives from raw scripts via archive sourcing.</li>
+                    <li>Scientific Rigor: Ensured historical accuracy via academic cross-referencing.</li>
+                    <li>Visual Narrative Design: Executed complex briefs including bespoke 3D shots and AI illustrations.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ANCIENNES EXPÉRIENCES - LISTE COMPACTE -->
+        <div class="timeline-item compact">
+            <div class="tm-date">PAST</div>
+            <div class="tm-content">
+                <div class="compact-list">
+                    <div class="compact-item">
+                        <span class="compact-role">Post-Production Director</span>
+                        <span class="compact-company">Addict TV</span>
+                    </div>
+                    <div class="compact-item">
+                        <span class="compact-role">Lead Colorist & CGI Compositor</span>
+                        <span class="compact-company">Saydam Tasarim Ltd.</span>
+                    </div>
+                    <div class="compact-item">
+                        <span class="compact-role">Photographer & Lighting Tech</span>
+                        <span class="compact-company">Amazon Imaging Service</span>
+                    </div>
+                </div>
+                <p class="compact-note">Full career details available in the downloadable CV below.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
         </section>
 
         <section id="contact-cta">
